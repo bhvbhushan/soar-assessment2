@@ -20,8 +20,6 @@ const DashboardPage = () => {
 
 const StyledCardListWrapper = styled.div`
   overflow: auto;
-  border: black solid 1px;
-  // padding: 1rem;
   display: flex;
   flex-direction: row;
 `;

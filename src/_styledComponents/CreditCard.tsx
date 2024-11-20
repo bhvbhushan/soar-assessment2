@@ -2,17 +2,7 @@
 import React, { useState } from 'react';
 import { Card, styled } from '@mui/material';
 
-interface StyledCardProps {
-  isFocused: boolean;
-}
-
-const StyledCard = styled(Card)<StyledCardProps>(({ theme, isFocused }) => ({
-  background: isFocused
-    ? 'linear-gradient(107.38deg, #5B5A6F 2.61%, #000000 101.2%)'
-    : theme.palette.background.paper,
-  color: isFocused
-    ? theme.palette.background.paper
-    : theme.palette.text.primary,
+const StyledCard = styled(Card)(() => ({
   transition: 'background-color 0.3s, color 0.3s',
   outline: 'none',
 }));
@@ -35,7 +25,6 @@ export const CreditCard: React.FC<{
       tabIndex={0}
       onFocus={handleFocus}
       onBlur={handleBlur}
-      isFocused={isFocused}
       sx={{
         minWidth: '340px',
         width: {
@@ -43,7 +32,7 @@ export const CreditCard: React.FC<{
           sm: '80%',
           md: '340px',
         },
-        p: '1rem',
+
         borderRadius: '25px',
         mr: '1rem',
       }}
