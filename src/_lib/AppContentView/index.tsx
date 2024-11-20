@@ -1,12 +1,15 @@
 import React from 'react';
 import AppSuspense from '_lib/AppSuspense';
 import { AppContent } from '_interfaces';
+import { DashboardLayoutComponent } from '_lib';
 
 const AppContentView: React.FC<AppContent> = (props) => {
   const { routes } = props;
   return (
     <>
-      <AppSuspense>{routes}</AppSuspense>
+      <DashboardLayoutComponent>
+        <AppSuspense>{routes}</AppSuspense>
+      </DashboardLayoutComponent>
     </>
   );
 };

@@ -1,6 +1,7 @@
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import { viteCommonjs } from '@originjs/vite-plugin-commonjs';
+import svgr from 'vite-plugin-svgr';
 
 import fs from 'fs';
 import path from 'path';
@@ -26,7 +27,7 @@ export default ({ mode }: { mode: string }) => {
   process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
 
   return defineConfig({
-    plugins: [react(), viteCommonjs()],
+    plugins: [react(), svgr({ include: '**/*.svg?react' }), viteCommonjs()],
     resolve: {
       alias: {
         ...alias,

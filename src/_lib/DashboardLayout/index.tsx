@@ -12,6 +12,7 @@ import {
   Typography,
   Divider,
   useMediaQuery,
+  Container,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
@@ -40,11 +41,7 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
       <Divider />
       <List>
         {menuItems.map((text) => (
-          <ListItem
-            key={text}
-            onClick={() => setHeader(text)}
-            component="menuitem"
-          >
+          <ListItem key={text} onClick={() => setHeader(text)} component="menu">
             {/* You can add ListItemIcon here */}
             <ListItemText primary={text} />
           </ListItem>
@@ -54,9 +51,23 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
   );
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'row' }}>
+    <div
+      style={{
+        display: 'flex',
+        height: '100%',
+        width: '100%',
+        flexDirection: 'column',
+        alignItems: 'flex-end',
+        justifyContent: 'center',
+        margin: 0,
+      }}
+    >
       <CssBaseline />
-      <AppBar position="fixed" sx={{ width: appbarWidth }} color="inherit">
+      <AppBar
+        position="static"
+        sx={{ width: appbarWidth, m: 0 }}
+        color="inherit"
+      >
         <Toolbar>
           {isMobile && (
             <IconButton
@@ -116,12 +127,20 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
       </nav>
 
       {/* Main content */}
-      <main
-        style={{ flexGrow: 1, padding: theme.spacing(3), width: appbarWidth }}
+      <Container
+        disableGutters
+        maxWidth={false}
+        sx={{
+          padding: theme.spacing(3),
+          width: appbarWidth,
+          height: '100%',
+          p: '1rem',
+          m: 0,
+        }}
       >
         <Toolbar />
         {children}
-      </main>
+      </Container>
     </div>
   );
 };

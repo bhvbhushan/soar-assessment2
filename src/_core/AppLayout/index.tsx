@@ -20,8 +20,7 @@ const AppLayout: React.FC = () => {
   console.log({ routes });
   return (
     <>
-      (
-      <AppContentView routes={routes} />)
+      <AppContentView routes={routes} />
     </>
   );
 };
