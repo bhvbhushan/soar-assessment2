@@ -1,150 +1,124 @@
-import * as React from 'react';
-import { extendTheme, styled } from '@mui/material/styles';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import BarChartIcon from '@mui/icons-material/BarChart';
-import DescriptionIcon from '@mui/icons-material/Description';
-import LayersIcon from '@mui/icons-material/Layers';
-import { AppProvider, Navigation, Router } from '@toolpad/core/AppProvider';
-import { DashboardLayout } from '@toolpad/core/DashboardLayout';
-import { PageContainer } from '@toolpad/core/PageContainer';
-import Grid from '@mui/material/Grid2';
+import React, { useState } from 'react';
+import { useTheme } from '@mui/material/styles';
+import {
+  AppBar,
+  Toolbar,
+  CssBaseline,
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
+  Divider,
+  useMediaQuery,
+  Container,
+} from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
 
-const NAVIGATION: Navigation = [
-  {
-    kind: 'header',
-    title: 'Main items',
-  },
-  {
-    segment: 'dashboard',
-    title: 'Dashboard',
-    icon: <DashboardIcon />,
-  },
-  {
-    segment: 'orders',
-    title: 'Orders',
-    icon: <ShoppingCartIcon />,
-  },
-  {
-    kind: 'divider',
-  },
-  {
-    kind: 'header',
-    title: 'Analytics',
-  },
-  {
-    segment: 'reports',
-    title: 'Reports',
-    icon: <BarChartIcon />,
-    children: [
-      {
-        segment: 'sales',
-        title: 'Sales',
-        icon: <DescriptionIcon />,
-      },
-      {
-        segment: 'traffic',
-        title: 'Traffic',
-        icon: <DescriptionIcon />,
-      },
-    ],
-  },
-  {
-    segment: 'integrations',
-    title: 'Integrations',
-    icon: <LayersIcon />,
-  },
-];
+const ResponsiveDrawer: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const menuItems = ['Home', 'About', 'Contact'];
+  const [header, setHeader] = useState(menuItems[0]);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const drawerWidth = isMobile ? 240 : '20%';
+  const appbarWidth = isMobile ? '100%' : '80%';
 
-const demoTheme = extendTheme({
-  colorSchemes: { light: true, dark: true },
-  colorSchemeSelector: 'class',
-  breakpoints: {
-    values: {
-      xs: 0,
-      sm: 600,
-      md: 600,
-      lg: 1200,
-      xl: 1536,
-    },
-  },
-});
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
 
-function useDemoRouter(initialPath: string): Router {
-  const [pathname, setPathname] = React.useState(initialPath);
-
-  const router = React.useMemo(() => {
-    return {
-      pathname,
-      searchParams: new URLSearchParams(),
-      navigate: (path: string | URL) => setPathname(String(path)),
-    };
-  }, [pathname]);
-
-  return router;
-}
-
-const Skeleton = styled('div')<{ height: number }>(({ theme, height }) => ({
-  backgroundColor: theme.palette.action.hover,
-  borderRadius: theme.shape.borderRadius,
-  height,
-  content: '" "',
-}));
-
-export default function DashboardLayoutComponent(props: any) {
-  const { window } = props;
-
-  const router = useDemoRouter('/dashboard');
-
-  // Remove this const when copying and pasting into your project.
-  const demoWindow = window ? window() : undefined;
+  const drawer = (
+    <div>
+      <Toolbar>
+        <Typography variant="h6" noWrap>
+          Soar Task
+        </Typography>
+      </Toolbar>
+      <Divider />
+      <List>
+        {menuItems.map((text) => (
+          <ListItem button key={text} onClick={() => setHeader(text)}>
+            {/* You can add ListItemIcon here */}
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+    </div>
+  );
 
   return (
-    <AppProvider
-      navigation={NAVIGATION}
-      router={router}
-      theme={demoTheme}
-      window={demoWindow}
-    >
-      <DashboardLayout>
-        <PageContainer>
-          <Grid container spacing={1}>
-            <Grid size={5} />
-            <Grid size={12}>
-              <Skeleton height={14} />
-            </Grid>
-            <Grid size={12}>
-              <Skeleton height={14} />
-            </Grid>
-            <Grid size={4}>
-              <Skeleton height={100} />
-            </Grid>
-            <Grid size={8}>
-              <Skeleton height={100} />
-            </Grid>
+    <div style={{ display: 'flex', flexDirection: 'row' }}>
+      <CssBaseline />
+      <AppBar position="fixed" sx={{ width: appbarWidth }} color="inherit">
+        <Toolbar>
+          {isMobile && (
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2 }}
+            >
+              <MenuIcon />
+            </IconButton>
+          )}
+          <Typography variant="h6" noWrap component="div">
+            {header}
+          </Typography>
+        </Toolbar>
+      </AppBar>
 
-            <Grid size={12}>
-              <Skeleton height={150} />
-            </Grid>
-            <Grid size={12}>
-              <Skeleton height={14} />
-            </Grid>
+      {/* Drawer */}
+      <nav aria-label="mailbox folders">
+        {/* Temporary drawer for mobile */}
+        {isMobile && (
+          <Drawer
+            variant="temporary"
+            open={mobileOpen}
+            onClose={handleDrawerToggle}
+            ModalProps={{
+              keepMounted: true, // Better open performance on mobile.
+            }}
+            sx={{
+              display: { xs: 'block', sm: 'none' },
+              '& .MuiDrawer-paper': {
+                boxSizing: 'border-box',
+                width: drawerWidth,
+              },
+            }}
+          >
+            {drawer}
+          </Drawer>
+        )}
+        {/* Permanent drawer for desktop */}
+        {!isMobile && (
+          <Drawer
+            variant="permanent"
+            sx={{
+              display: { xs: 'none', sm: 'block' },
+              '& .MuiDrawer-paper': {
+                boxSizing: 'border-box',
+                width: drawerWidth,
+              },
+            }}
+            open
+          >
+            {drawer}
+          </Drawer>
+        )}
+      </nav>
 
-            <Grid size={3}>
-              <Skeleton height={100} />
-            </Grid>
-            <Grid size={3}>
-              <Skeleton height={100} />
-            </Grid>
-            <Grid size={3}>
-              <Skeleton height={100} />
-            </Grid>
-            <Grid size={3}>
-              <Skeleton height={100} />
-            </Grid>
-          </Grid>
-        </PageContainer>
-      </DashboardLayout>
-    </AppProvider>
+      {/* Main content */}
+      <main style={{ flexGrow: 1, padding: theme.spacing(3) }}>
+        <Toolbar />
+        {children}
+      </main>
+    </div>
   );
-}
+};
+
+export default ResponsiveDrawer;
