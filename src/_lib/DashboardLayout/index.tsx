@@ -12,11 +12,10 @@ import {
   Typography,
   Divider,
   useMediaQuery,
-  Container,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
-const ResponsiveDrawer: React.FC<{ children: React.ReactNode }> = ({
+const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const menuItems = ['Home', 'About', 'Contact'];
@@ -41,7 +40,11 @@ const ResponsiveDrawer: React.FC<{ children: React.ReactNode }> = ({
       <Divider />
       <List>
         {menuItems.map((text) => (
-          <ListItem button key={text} onClick={() => setHeader(text)}>
+          <ListItem
+            key={text}
+            onClick={() => setHeader(text)}
+            component="menuitem"
+          >
             {/* You can add ListItemIcon here */}
             <ListItemText primary={text} />
           </ListItem>
@@ -113,7 +116,9 @@ const ResponsiveDrawer: React.FC<{ children: React.ReactNode }> = ({
       </nav>
 
       {/* Main content */}
-      <main style={{ flexGrow: 1, padding: theme.spacing(3) }}>
+      <main
+        style={{ flexGrow: 1, padding: theme.spacing(3), width: appbarWidth }}
+      >
         <Toolbar />
         {children}
       </main>
@@ -121,4 +126,4 @@ const ResponsiveDrawer: React.FC<{ children: React.ReactNode }> = ({
   );
 };
 
-export default ResponsiveDrawer;
+export default DashboardLayout;
