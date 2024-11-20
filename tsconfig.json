@@ -28,6 +28,6 @@
 		},
 		"types": ["vite-plugin-svgr/client"]
 	},
-	"include": ["src", "env.ts"],
+	"include": ["src", "env.ts", "src/**/*"],
 	"references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -54,7 +54,7 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
     <div
       style={{
         display: 'flex',
-        height: '100%',
+        height: '95%',
         width: '100%',
         flexDirection: 'column',
         alignItems: 'flex-end',

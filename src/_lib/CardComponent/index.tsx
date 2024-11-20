@@ -1,4 +1,4 @@
-import { Box, Divider, useTheme } from '@mui/material';
+import { Box, useTheme } from '@mui/material';
 
 import ChipLogoTransparent from 'assets/ChipLogoTransparent.png';
 import ChipLogoDark from 'assets/ChipLogoDark.png';
@@ -32,6 +32,7 @@ const CardComponent: React.FC<cardComponentProps> = ({ isFocused }) => {
         sx={{
           background: backgroundMain,
           p: '1rem',
+          height: '70%',
         }}
       >
         <StyledStack>
@@ -98,6 +99,7 @@ const CardComponent: React.FC<cardComponentProps> = ({ isFocused }) => {
           justifyContent: 'space-between',
           p: 1,
           borderTop: `1px solid ${isFocused ? backgroundSecondary : '#DFEAF2'}`,
+          height: '30%',
         }}
       >
         <StyledTypographyMain

@@ -6,6 +6,9 @@ import AppRoutes from './AppRoutes';
 import CardComponent from './CardComponent';
 import LogoIconComponent from './LogoIconComponent';
 import CardWrapperComponent from './CardWrapperComponent';
+import TransactionsListComponent from './TransactionsListComponent';
+import TransactionCardComponent from './TransactionCardComponent';
+
 export {
   DashboardLayoutComponent,
   AppLoader,
@@ -15,4 +18,6 @@ export {
   CardComponent,
   LogoIconComponent,
   CardWrapperComponent,
+  TransactionsListComponent,
+  TransactionCardComponent,
 };
