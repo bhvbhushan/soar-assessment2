@@ -1,27 +1,11 @@
-import { CardComponent } from '_lib';
-import { CreditCard } from '_styledComponents';
-import styled from 'styled-components';
+import { CardWrapperComponent } from '_lib';
 
 const DashboardPage = () => {
   return (
     <>
-      <StyledCardListWrapper className="sm:w-3/5  w-100%">
-        <CreditCard>
-          {(isFocussed) => <CardComponent isFocused={isFocussed} />}
-        </CreditCard>
-
-        <CreditCard>
-          {(isFocussed) => <CardComponent isFocused={isFocussed} />}
-        </CreditCard>
-      </StyledCardListWrapper>
+      <CardWrapperComponent />
     </>
   );
 };
-
-const StyledCardListWrapper = styled.div`
-  overflow: auto;
-  display: flex;
-  flex-direction: row;
-`;
 
 export default DashboardPage;

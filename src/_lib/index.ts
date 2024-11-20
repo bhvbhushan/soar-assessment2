@@ -5,7 +5,7 @@ import AppContentView from './AppContentView';
 import AppRoutes from './AppRoutes';
 import CardComponent from './CardComponent';
 import LogoIconComponent from './LogoIconComponent';
-
+import CardWrapperComponent from './CardWrapperComponent';
 export {
   DashboardLayoutComponent,
   AppLoader,
@@ -14,4 +14,5 @@ export {
   AppRoutes,
   CardComponent,
   LogoIconComponent,
+  CardWrapperComponent,
 };
