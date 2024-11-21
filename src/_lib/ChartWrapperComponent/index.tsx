@@ -2,10 +2,10 @@ import { ChartComponent, ModuleComponent } from '_lib';
 
 import React from 'react';
 
-const ChartWrapperComponent = () => {
+const ChartWrapperComponent = ({ type, width }) => {
   return (
-    <ModuleComponent primaryHeader="Weekly Activity" width={'60%'}>
-      <ChartComponent />
+    <ModuleComponent primaryHeader="Weekly Activity" width={width}>
+      <ChartComponent type={type} />
     </ModuleComponent>
   );
 };

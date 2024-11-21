@@ -16,6 +16,9 @@ import {
 } from 'chart.js';
 import { Bar, Line, Pie, PolarArea, Radar, Doughnut } from 'react-chartjs-2';
 import { Box } from '@mui/material';
+import BarChart from './BarChart';
+import PieChart from './PieChart';
+import LineChart from './LineChart';
 
 // Register the necessary components
 ChartJS.register(
@@ -32,7 +35,7 @@ ChartJS.register(
   Filler
 );
 
-const ChartComponent = () => {
+const ChartComponent = ({ type }) => {
   const data = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June'],
     datasets: [
@@ -48,32 +51,19 @@ const ChartComponent = () => {
       },
     ],
   };
-
-  const options = {
-    layout: {
-      padding: {
-        bottom: 30,
-      },
-    },
-    datasets: {
-      bar: {
-        barThickness: 10,
-        borderRadius: 5,
-        borderSkipped: false,
-      },
-    },
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        position: 'top' as const,
-      },
-      title: {
-        display: true,
-        text: 'Monthly Sales',
-      },
-    },
+  const getChart = (type: string) => {
+    switch (type) {
+      case 'bar':
+        return <BarChart data={data} />;
+      case 'pie':
+        return <PieChart />;
+      case 'line':
+        return <LineChart />;
+      default:
+        return <BarChart data={data} />;
+    }
   };
+
   return (
     <Box
       sx={{
@@ -86,7 +76,7 @@ const ChartComponent = () => {
         height: '99%',
       }}
     >
-      <Bar data={data} options={options} />
+      {getChart(type)}
     </Box>
   );
 };

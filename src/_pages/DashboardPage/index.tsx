@@ -12,13 +12,13 @@ const DashboardPage = () => {
         <CardWrapperComponent />
         <TransactionsListComponent />
       </SectionWrapper>
-      <SectionWrapper CompHeight="30%">
-        <ChartWrapperComponent />
-        <TransactionsListComponent />
+      <SectionWrapper CompHeight="40%">
+        <ChartWrapperComponent type="bar" width={'60%'} />
+        <ChartWrapperComponent type="pie" width={'40%'} />
       </SectionWrapper>
       <SectionWrapper CompHeight="30%">
-        <ChartWrapperComponent />
         <TransactionsListComponent />
+        <ChartWrapperComponent type="line" width={'60%'} />
       </SectionWrapper>
     </>
   );
