@@ -11,6 +11,9 @@ import TransactionCardComponent from './TransactionCardComponent';
 import ModuleComponent from './ModuleComponent';
 import ChartComponent from './ChartComponent';
 import ChartWrapperComponent from './ChartWrapperComponent';
+import CarousalComponent from './CarousalComponent';
+import TransferModule from './TransferModule';
+import TransferIconComponent from './TransferIconComponent';
 
 export {
   DashboardLayoutComponent,
@@ -26,4 +29,7 @@ export {
   ModuleComponent,
   ChartComponent,
   ChartWrapperComponent,
+  CarousalComponent,
+  TransferModule,
+  TransferIconComponent,
 };

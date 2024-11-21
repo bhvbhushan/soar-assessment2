@@ -12,11 +12,11 @@ import {
   ArcElement,
   RadialLinearScale,
   Filler,
+  Point,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import ChartDataLabels, { Context } from 'chartjs-plugin-datalabels'; // Import the plugin
 
-import { getRandomNum } from '_helpers';
 // Register the necessary components
 ChartJS.register(
   CategoryScale,
@@ -51,7 +51,6 @@ const LineChart = () => {
   const createGradient = (chart: ChartJS<'line'>) => {
     const ctx = chart.ctx;
     const chartArea = chart.chartArea;
-    console.log({ chartArea });
 
     if (!chartArea) {
       // Chart hasn't been drawn yet, exit early
@@ -94,7 +93,7 @@ const LineChart = () => {
         align: 'end',
       },
     },
-    onResize: (chart) => {
+    onResize: (chart: ChartJS<'line', (number | Point | null)[], unknown>) => {
       createGradient(chart);
       chart.update('none'); // Update without animation for performance
     },

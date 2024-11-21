@@ -72,8 +72,8 @@ const ChartComponent = ({ type }) => {
         pb: '1rem',
         minHeight: '300px',
         overflowX: 'auto',
-        width: '99%',
-        height: '99%',
+        width: '100%',
+        height: '100%',
       }}
     >
       {getChart(type)}
@@ -81,4 +81,4 @@ const ChartComponent = ({ type }) => {
   );
 };
 
-export default ChartComponent;
+export default React.memo(ChartComponent);

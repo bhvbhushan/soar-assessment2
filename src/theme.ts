@@ -1,4 +1,4 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
 /**
  * Extra palette colors for Transactions
@@ -25,7 +25,7 @@ declare module '@mui/material/Typography' {
   }
 }
 
-const theme = createTheme({
+let theme = createTheme({
   typography: {
     fontFamily: 'Inter, sans-serif', // Your preferred font family
     h1: {
@@ -61,5 +61,7 @@ const theme = createTheme({
     },
   },
 });
+
+theme = responsiveFontSizes(theme);
 
 export default theme;

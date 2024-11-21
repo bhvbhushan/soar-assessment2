@@ -2,6 +2,7 @@ import {
   CardWrapperComponent,
   ChartWrapperComponent,
   TransactionsListComponent,
+  TransferModule,
 } from '_lib';
 import { SectionWrapper } from '_styledComponents';
 
@@ -17,7 +18,7 @@ const DashboardPage = () => {
         <ChartWrapperComponent type="pie" width={'40%'} />
       </SectionWrapper>
       <SectionWrapper CompHeight="30%">
-        <TransactionsListComponent />
+        <TransferModule />
         <ChartWrapperComponent type="line" width={'60%'} />
       </SectionWrapper>
     </>
