@@ -13,14 +13,56 @@ import {
   Divider,
   useMediaQuery,
   Container,
+  ListItemButton,
+  ListItemIcon,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import dashboardActive from 'assets/dashboardActive.png';
+import dashboardInactive from 'assets/dashboardInactive.png';
+import settingActive from 'assets/settingActive.png';
+import settingInactive from 'assets/settingInactive.png';
+import txns from 'assets/txns.png';
+import accounts from 'assets/accounts.png';
+import investments from 'assets/investments.png';
+import cc from 'assets/cc.png';
+import loans from 'assets/loans.png';
+import services from 'assets/services.png';
+import privileges from 'assets/privileges.png';
+import LogoIconComponent from '_lib/LogoIconComponent';
+import { StyledTypographyMain } from '_styledComponents';
+import { useNavigate } from 'react-router-dom';
 
 const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const menuItems = ['Home', 'About', 'Contact'];
+  const menuItems = [
+    { label: 'Dashboard', icon: 'dashboard', name: 'dashboard' },
+    { label: 'Transactions', icon: 'txns', name: 'transactions' },
+    { label: 'Accounts', icon: 'accounts', name: 'accounts' },
+    { label: 'Investments', icon: 'investments', name: 'investments' },
+    { label: 'Credit Cards', icon: 'cc', name: 'cc' },
+    { label: 'Loans', icon: 'loans', name: 'loans' },
+    { label: 'Services', icon: 'services', name: 'services' },
+    { label: 'My Privileges', icon: 'privileges', name: 'privileges' },
+    { label: 'Setting', icon: 'setting', name: 'setting' },
+  ];
+  const navigate = useNavigate();
   const [header, setHeader] = useState(menuItems[0]);
+  const dashboardIcon =
+    header.icon === 'dashboard' ? dashboardActive : dashboardInactive;
+  const settingIcon =
+    header.icon === 'setting' ? settingActive : settingInactive;
+  const iconMap = {
+    dashboard: dashboardIcon,
+    setting: settingIcon,
+    txns,
+    accounts,
+    investments,
+    cc,
+    loans,
+    services,
+    privileges,
+  };
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -29,6 +71,12 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
+  };
+
+  const menuClickHandler = (text) => {
+    setHeader(text);
+    navigate(`/${text.name}`);
+    if (isMobile) setMobileOpen(false);
   };
 
   const drawer = (
@@ -41,9 +89,26 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
       <Divider />
       <List>
         {menuItems.map((text) => (
-          <ListItem key={text} onClick={() => setHeader(text)} component="menu">
-            {/* You can add ListItemIcon here */}
-            <ListItemText primary={text} />
+          <ListItem>
+            <ListItemButton
+              key={text.name}
+              onClick={() => menuClickHandler(text)}
+              component="menu"
+              disabled={!['dashboard', 'setting'].includes(text.icon)}
+            >
+              <ListItemIcon>
+                <LogoIconComponent
+                  src={iconMap[text.icon]}
+                  width={'2rem'}
+                  height={'2rem'}
+                />
+              </ListItemIcon>
+              <ListItemText>
+                <StyledTypographyMain variant="h6">
+                  {text.label}
+                </StyledTypographyMain>
+              </ListItemText>
+            </ListItemButton>
           </ListItem>
         ))}
       </List>
@@ -81,7 +146,7 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
             </IconButton>
           )}
           <Typography variant="h6" noWrap component="div">
-            {header}
+            {header.label}
           </Typography>
         </Toolbar>
       </AppBar>
