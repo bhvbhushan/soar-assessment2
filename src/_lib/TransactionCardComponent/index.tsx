@@ -28,7 +28,10 @@ const trxLogo = (logoName: trxLogoTypeEnum) => (
 const TransactionCardComponent: React.FC<trxCardProps> = ({ trx }) => {
   const theme = useTheme();
   return (
-    <Box display={'flex'} sx={{ justifyContent: 'space-between', my: '1rem' }}>
+    <Box
+      display={'flex'}
+      sx={{ justifyContent: 'space-between', my: '1rem', p: '0.5rem' }}
+    >
       <Box display={'flex'}>
         {trxLogo(trx.icon)}
         <Box

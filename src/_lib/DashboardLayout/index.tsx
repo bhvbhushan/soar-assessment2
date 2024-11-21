@@ -54,7 +54,7 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
     <div
       style={{
         display: 'flex',
-        height: '95%',
+        height: '90%',
         width: '100%',
         flexDirection: 'column',
         alignItems: 'flex-end',
@@ -64,7 +64,7 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
     >
       <CssBaseline />
       <AppBar
-        position="static"
+        position="fixed"
         sx={{ width: appbarWidth, m: 0 }}
         color="inherit"
       >
@@ -125,20 +125,26 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
           </Drawer>
         )}
       </nav>
+      <Toolbar />
+      <Toolbar />
 
       {/* Main content */}
       <Container
         disableGutters
         maxWidth={false}
         sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          rowGap: 5,
+          justifyContent: 'flex-start',
           padding: theme.spacing(3),
           width: appbarWidth,
-          height: '100%',
+          minHeight: '100%',
           p: '1rem',
           m: 0,
+          overflow: 'scrollable',
         }}
       >
-        <Toolbar />
         {children}
       </Container>
     </div>

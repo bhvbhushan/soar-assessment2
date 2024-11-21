@@ -1,15 +1,7 @@
 // src/components/ThemedCard.tsx
 import React, { useState } from 'react';
-import { Card, styled } from '@mui/material';
 
-const StyledCard = styled(Card)(() => ({
-  display: 'flex',
-  transition: 'background-color 0.3s, color 0.3s',
-  outline: 'none',
-  height: '100%',
-  flexDirection: 'column',
-  justifyContent: 'space-between',
-}));
+import { StyledCard } from '_styledComponents';
 
 export const CreditCard: React.FC<{
   children: (isFocused: boolean) => React.ReactNode;
@@ -40,7 +32,6 @@ export const CreditCard: React.FC<{
           md: '340px',
         },
 
-        borderRadius: '25px',
         mr: '1rem',
       }}
     >

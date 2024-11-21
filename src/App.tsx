@@ -11,9 +11,10 @@ function App() {
         height: '100%',
         width: '100%',
         margin: 0,
-        padding: 0,
+        padding: '0',
         display: 'flex',
-        flexGrow: 1,
+        // flexGrow: 1,
+        // overflow: 'scroll',
       }}
     >
       <BrowserRouter>

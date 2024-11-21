@@ -8,6 +8,9 @@ import LogoIconComponent from './LogoIconComponent';
 import CardWrapperComponent from './CardWrapperComponent';
 import TransactionsListComponent from './TransactionsListComponent';
 import TransactionCardComponent from './TransactionCardComponent';
+import ModuleComponent from './ModuleComponent';
+import ChartComponent from './ChartComponent';
+import ChartWrapperComponent from './ChartWrapperComponent';
 
 export {
   DashboardLayoutComponent,
@@ -20,4 +23,7 @@ export {
   CardWrapperComponent,
   TransactionsListComponent,
   TransactionCardComponent,
+  ModuleComponent,
+  ChartComponent,
+  ChartWrapperComponent,
 };

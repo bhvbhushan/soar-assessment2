@@ -1,8 +1,6 @@
-import { Box, List } from '@mui/material';
+import { List } from '@mui/material';
 import { trxLogoTypeEnum, TrxMockData, trxTypeEnum } from '_constants';
-import { TransactionCardComponent } from '_lib';
-import { StyledTypographyMain } from '_styledComponents';
-import React from 'react';
+import { ModuleComponent, TransactionCardComponent } from '_lib';
 
 const TransactionsListComponent = () => {
   const transactions = TrxMockData.map((trx) => {
@@ -13,24 +11,13 @@ const TransactionsListComponent = () => {
     };
   });
   return (
-    <Box
-      display={'flex'}
-      sx={{
-        flexDirection: 'column',
-        flex: '1 1 auto',
-        maxHeight: '25%',
-        border: '1px solid red',
-      }}
-    >
-      <StyledTypographyMain variant="h6">
-        Recent Transactions
-      </StyledTypographyMain>
-      <List sx={{ overflowY: 'auto' }}>
+    <ModuleComponent primaryHeader="Recent Transactions" width={'40%'}>
+      <List>
         {transactions.map((trx, idx) => {
           return <TransactionCardComponent trx={trx} key={idx} />;
         })}
       </List>
-    </Box>
+    </ModuleComponent>
   );
 };
 
