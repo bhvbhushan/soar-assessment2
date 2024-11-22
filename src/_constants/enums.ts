@@ -8,3 +8,9 @@ export enum trxTypeEnum {
   debit = 'Debit',
   credit = 'Credit',
 }
+
+export enum fieldInputTypeEnum {
+  text = 'text',
+  password = 'passwrord',
+  date = 'date',
+}

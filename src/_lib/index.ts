@@ -15,6 +15,9 @@ import CarousalComponent from './CarousalComponent';
 import TransferModule from './TransferModule';
 import TransferIconComponent from './TransferIconComponent';
 import AppBarCustom from './AppBar';
+import BasicTabs from './TabComponent';
+import ProfileSection from './ProfileSection';
+import FormDataComponent from './FormDataComponent';
 
 export {
   DashboardLayoutComponent,
@@ -34,4 +37,7 @@ export {
   TransferModule,
   TransferIconComponent,
   AppBarCustom,
+  BasicTabs,
+  ProfileSection,
+  FormDataComponent,
 };

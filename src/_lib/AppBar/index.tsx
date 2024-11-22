@@ -32,21 +32,16 @@ const appBarLg = ({ header }) => {
         <SearchInput />
 
         <IconWrapper>
-          <LogoIconComponent
-            src={settingLogo}
-            width={'1.5rem'}
-            height={'1.5rem'}
-          />
+          <LogoIconComponent src={settingLogo} width={'1rem'} height={'1rem'} />
         </IconWrapper>
         <IconWrapper>
           <LogoIconComponent
             src={notificationLogo}
-            width={'1.5rem'}
-            height={'1.5rem'}
+            width={'1rem'}
+            height={'1rem'}
           />
         </IconWrapper>
-        {/* </>
-          )} */}
+
         <LogoIconComponent src={userLogo} height={'3rem'} width={'3rem'} />
       </Box>
     </>
@@ -84,7 +79,7 @@ const appBarSm = ({ handleDrawerToggle, header }) => {
         <Typography variant="h6" noWrap component="div">
           {header.label}
         </Typography>
-        <LogoIconComponent src={userLogo} height={'3rem'} width={'3rem'} />
+        <LogoIconComponent src={userLogo} height={'3.5rem'} width={'3.5rem'} />
       </Box>
       <Box sx={{ display: 'flex' }}>
         <SearchInput />
@@ -102,7 +97,7 @@ const AppBarCustom: React.FC<appBarProps> = ({
   <>
     <AppBar position="fixed" sx={{ width: appbarWidth, m: 0 }} color="inherit">
       <Toolbar
-        sx={{ display: 'flex', justifyContent: 'space-between', py: '0.5rem' }}
+        sx={{ display: 'flex', justifyContent: 'space-between', py: '0.7rem' }}
       >
         {isMobile
           ? appBarSm({ handleDrawerToggle, header })

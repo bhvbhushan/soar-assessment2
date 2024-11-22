@@ -1,7 +1,7 @@
 import { Box, Button, TextField, useTheme } from '@mui/material';
 import CarousalComponent from '_lib/CarousalComponent';
 import ModuleComponent from '_lib/ModuleComponent';
-import { StyledTypographyLight } from '_styledComponents';
+import { StyledButton, StyledTypographyLight } from '_styledComponents';
 import SendIcon from '@mui/icons-material/Send';
 import React from 'react';
 
@@ -56,19 +56,16 @@ const TransferModule = () => {
                 marginRight: 'auto', // Push the button to the right
               }}
             />
-            <Button
-              variant="contained"
+            <StyledButton
               endIcon={<SendIcon />}
               // onClick={handleSubmit}
               sx={{
-                backgroundColor: 'black', // Black button background
                 borderRadius: '20px', // Rounded button
-                padding: '10px 20px', // Adjust padding as needed
                 marginLeft: 2, // Add some space between input and button
               }}
             >
               Send
-            </Button>
+            </StyledButton>
           </Box>
         </Box>
       </Box>

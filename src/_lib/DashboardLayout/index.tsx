@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 import {
-  AppBar,
   Toolbar,
   CssBaseline,
   Drawer,
-  IconButton,
   List,
   ListItem,
   ListItemText,
@@ -15,9 +13,8 @@ import {
   Container,
   ListItemButton,
   ListItemIcon,
-  Box,
 } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+
 import dashboardActive from 'assets/dashboardActive.png';
 import dashboardInactive from 'assets/dashboardInactive.png';
 import settingActive from 'assets/settingActive.png';
@@ -31,21 +28,16 @@ import services from 'assets/services.png';
 import privileges from 'assets/privileges.png';
 import CompanyLogo from 'assets/CompanyLogo.png';
 import LogoIconComponent from '_lib/LogoIconComponent';
-import settingLogo from 'assets/settingIconHeader.png';
-import notificationLogo from 'assets/notification.png';
-import userLogo from 'assets/user.png';
-import {
-  IconWrapper,
-  SearchInput,
-  StyledTypographyMain,
-} from '_styledComponents';
+
+import { StyledTypographyMain } from '_styledComponents';
 import { useNavigate } from 'react-router-dom';
 import { AppBarCustom } from '_lib';
+import { menuItemInterface } from '_interfaces';
 
 const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const menuItems = [
+  const menuItems: menuItemInterface[] = [
     { label: 'Dashboard', icon: 'dashboard', name: 'dashboard' },
     { label: 'Transactions', icon: 'txns', name: 'transactions' },
     { label: 'Accounts', icon: 'accounts', name: 'accounts' },
@@ -83,7 +75,7 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
     setMobileOpen(!mobileOpen);
   };
 
-  const menuClickHandler = (text) => {
+  const menuClickHandler = (text: menuItemInterface) => {
     setHeader(text);
     navigate(`/${text.name}`);
     if (isMobile) setMobileOpen(false);
