@@ -1,9 +1,8 @@
-import { Box, Button, TextField, useTheme } from '@mui/material';
+import { Box, TextField, useTheme } from '@mui/material';
 import CarousalComponent from '_lib/CarousalComponent';
 import ModuleComponent from '_lib/ModuleComponent';
 import { StyledButton, StyledTypographyLight } from '_styledComponents';
 import SendIcon from '@mui/icons-material/Send';
-import React from 'react';
 
 const TransferModule = () => {
   const theme = useTheme();

@@ -11,8 +11,10 @@ import {
   ArcElement,
   RadialLinearScale,
   Filler,
+  ChartData,
+  ChartOptions,
 } from 'chart.js';
-import ChartDataLabels, { Context } from 'chartjs-plugin-datalabels'; // Import
+import ChartDataLabels from 'chartjs-plugin-datalabels'; // Import
 
 import { Bar } from 'react-chartjs-2';
 // Register the necessary components
@@ -31,8 +33,8 @@ ChartJS.register(
   ChartDataLabels
 );
 
-const BarChart = ({ data }) => {
-  const options = {
+const BarChart: React.FC<{ data: ChartData<'bar'> }> = ({ data }) => {
+  const options: ChartOptions<'bar'> = {
     scales: {
       y: {
         beginAtZero: true,
@@ -55,7 +57,7 @@ const BarChart = ({ data }) => {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
-      datalabel: {
+      datalabels: {
         display: 'auto',
       },
       legend: {

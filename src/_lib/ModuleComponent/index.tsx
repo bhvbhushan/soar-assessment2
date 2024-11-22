@@ -1,4 +1,5 @@
 import { Box } from '@mui/material';
+import { dimension } from '_constants';
 import {
   ModuleWrapper,
   StyledCard,
@@ -11,7 +12,7 @@ interface moduleCompProps {
   btnComp?: React.ReactElement;
   children: React.ReactElement;
   singleChildCard?: boolean;
-  width: string;
+  width: dimension;
 }
 
 const ModuleComponent: React.FC<moduleCompProps> = ({

@@ -70,3 +70,47 @@ export const TrxMockData = [
     type: 'Debit',
   },
 ];
+
+export const contactData = [
+  {
+    icon: 'livia',
+    name: 'Livia Bator',
+    role: 'CEO',
+  },
+  {
+    icon: 'randy',
+    name: 'Randy Press',
+    role: 'Director',
+  },
+  {
+    icon: 'workman1',
+    name: 'Workman',
+    role: 'Designer',
+  },
+  {
+    icon: 'workman2',
+    name: 'Workman',
+    role: 'Designer',
+  },
+  {
+    icon: 'workman3',
+    name: 'Workman',
+    role: 'Designer',
+  },
+];
+
+export const barData = {
+  labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+  datasets: [
+    {
+      label: 'Sales ($)',
+      data: [3000, 2000, 4000, 5000, 3000, 6000],
+      backgroundColor: 'rgba(75, 192, 192, 0.5)',
+    },
+    {
+      label: 'Revenue ($)',
+      data: [3000, 2000, 4000, 5000, 3000, 6000],
+      backgroundColor: 'rgba(75, 122, 102, 0.5)',
+    },
+  ],
+};

@@ -1,8 +1,9 @@
 import { Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import { dimension } from '_constants';
 
 interface moduleWrapperInterface {
-  width: string;
+  width: dimension;
 }
 
 export const ModuleWrapper = styled(Box)<moduleWrapperInterface>(

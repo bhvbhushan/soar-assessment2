@@ -2,6 +2,7 @@ import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
+import { tabStrucureInterface } from '_interfaces';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -32,10 +33,12 @@ const a11yProps = (index: number) => {
   };
 };
 
-const BasicTabs = ({ tabData }) => {
+const BasicTabs: React.FC<{ tabData: tabStrucureInterface[] }> = ({
+  tabData,
+}) => {
   const [value, setValue] = React.useState(0);
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 

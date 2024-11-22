@@ -27,3 +27,15 @@ export interface menuItemInterface {
   icon: string;
   name: string;
 }
+
+export interface contactInterface {
+  icon: string;
+  name: string;
+  role: string;
+}
+
+export interface tabStrucureInterface {
+  label: string;
+  content?: React.ReactNode;
+  active: boolean;
+}

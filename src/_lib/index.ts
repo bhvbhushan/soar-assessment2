@@ -18,6 +18,7 @@ import AppBarCustom from './AppBar';
 import BasicTabs from './TabComponent';
 import ProfileSection from './ProfileSection';
 import FormDataComponent from './FormDataComponent';
+import DatePickerComponent from './DatePicker';
 
 export {
   DashboardLayoutComponent,
@@ -40,4 +41,5 @@ export {
   BasicTabs,
   ProfileSection,
   FormDataComponent,
+  DatePickerComponent,
 };

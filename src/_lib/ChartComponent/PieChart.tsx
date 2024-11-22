@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -12,6 +11,7 @@ import {
   ArcElement,
   RadialLinearScale,
   Filler,
+  ChartOptions,
 } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import ChartDataLabels, { Context } from 'chartjs-plugin-datalabels'; // Import the plugin
@@ -35,7 +35,7 @@ ChartJS.register(
 
 const PieChart = () => {
   const labels = ['Red', 'Blue', 'Yellow', 'Green'];
-  const offsets = labels.map((lbl) => getRandomNum(25, 50));
+  const offsets = labels.map(() => getRandomNum(25, 50));
   console.log({ offsets });
   const data = {
     labels: labels,
@@ -54,7 +54,7 @@ const PieChart = () => {
     ],
   };
 
-  const options = {
+  const options: ChartOptions<'pie'> = {
     plugins: {
       datalabels: {
         // This plugin's configuration

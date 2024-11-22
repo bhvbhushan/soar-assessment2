@@ -87,9 +87,9 @@ const ProfileSection = () => {
             const field = key as FieldKey;
             return (
               <FormDataComponent
-                label={fieldLabelMapping[field]}
+                label={fieldLabelMapping[field] ? fieldLabelMapping[field] : ''}
                 inputType={getInputType(field)}
-                inputData={userData[field]}
+                inputData={userData[field] ? userData[field] : ''}
               />
             );
           })}

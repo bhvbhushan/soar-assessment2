@@ -6,15 +6,21 @@ import MenuIcon from '@mui/icons-material/Menu';
 import settingLogo from 'assets/settingIconHeader.png';
 import notificationLogo from 'assets/notification.png';
 import userLogo from 'assets/user.png';
+import { menuItemInterface } from '_interfaces';
 
 interface appBarProps {
   appbarWidth: string;
   isMobile: boolean;
   handleDrawerToggle: () => void;
-  header;
+  header: menuItemInterface;
 }
 
-const appBarLg = ({ header }) => {
+interface appBarSmProps {
+  handleDrawerToggle: () => void;
+  header: menuItemInterface;
+}
+
+const appBarLg: React.FC<{ header: menuItemInterface }> = ({ header }) => {
   return (
     <>
       <Box
@@ -48,7 +54,7 @@ const appBarLg = ({ header }) => {
   );
 };
 
-const appBarSm = ({ handleDrawerToggle, header }) => {
+const appBarSm: React.FC<appBarSmProps> = ({ handleDrawerToggle, header }) => {
   return (
     <Box
       sx={{

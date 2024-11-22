@@ -1,4 +1,5 @@
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button } from '@mui/material';
+import { contactInterface } from '_interfaces';
 import LogoIconComponent from '_lib/LogoIconComponent';
 import { StyledTypographyLight, StyledTypographyMain } from '_styledComponents';
 import LiviaLogo from 'assets/LiviaLogo.png';
@@ -9,8 +10,9 @@ import Workman3 from 'assets/Workman3.png';
 
 import React from 'react';
 
-const TransferIconComponent = ({ item }) => {
-  console.log({ item });
+const TransferIconComponent: React.FC<{ item: contactInterface }> = ({
+  item,
+}) => {
   const iconMap = {
     livia: LiviaLogo,
     randy: RandyLogo,
@@ -39,7 +41,7 @@ const TransferIconComponent = ({ item }) => {
     >
       <Button sx={{ display: 'flex', flexDirection: 'column' }}>
         <LogoIconComponent
-          src={iconMap[item.icon]}
+          src={iconMap[item.icon as keyof typeof iconMap]}
           height={'4rem'}
           width={'4rem'}
         />

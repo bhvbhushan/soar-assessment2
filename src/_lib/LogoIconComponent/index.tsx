@@ -1,9 +1,10 @@
+import { dimension } from '_constants';
 import React from 'react';
 
 interface LogoProps {
   src: string; // Image path
-  width?: number | string; // Width can be number (pixels) or string (e.g., '50%')
-  height?: number | string; // Height can be number (pixels) or string
+  width?: dimension; // Width can be number (pixels) or string (e.g., '50%')
+  height?: dimension; // Height can be number (pixels) or string
   alt?: string; // Alternative text for accessibility
 }
 

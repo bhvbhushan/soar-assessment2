@@ -1,7 +1,4 @@
-// src/components/MultiItemCarousel.jsx
-
-import React from 'react';
-import { Box, Typography, Button } from '@mui/material';
+import { Box } from '@mui/material';
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -14,35 +11,10 @@ import 'swiper/css/pagination';
 // Import Swiper modules
 import { Navigation } from 'swiper/modules';
 import TransferIconComponent from '_lib/TransferIconComponent';
+import { contactInterface } from '_interfaces';
+import { contactData } from '_constants';
 
-const carouselItems = [
-  {
-    icon: 'livia',
-    name: 'Livia Bator',
-    role: 'CEO',
-  },
-  {
-    icon: 'randy',
-    name: 'Randy Press',
-    role: 'Director',
-  },
-  {
-    icon: 'workman1',
-    name: 'Workman',
-    role: 'Designer',
-  },
-  {
-    icon: 'workman2',
-    name: 'Workman',
-    role: 'Designer',
-  },
-  {
-    icon: 'workman3',
-    name: 'Workman',
-    role: 'Designer',
-  },
-  // Add more items as needed
-];
+const carouselItems: contactInterface[] = contactData;
 
 const MultiItemCarousel = () => {
   return (

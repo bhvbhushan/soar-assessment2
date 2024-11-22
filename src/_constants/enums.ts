@@ -14,3 +14,9 @@ export enum fieldInputTypeEnum {
   password = 'passwrord',
   date = 'date',
 }
+
+export enum chartTypeEnum {
+  bar = 'bar',
+  pie = 'pie',
+  line = 'line',
+}

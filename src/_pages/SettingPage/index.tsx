@@ -1,29 +1,10 @@
 import { Box } from '@mui/material';
+import { TabData } from '_constants';
 import { BasicTabs, ProfileSection } from '_lib';
-import { StyledCard, StyledTypographyMain } from '_styledComponents';
-import React from 'react';
-
-const TabData = [
-  {
-    label: 'Edit Profile',
-    content: <ProfileSection />,
-    active: true,
-  },
-  {
-    label: 'Preferences',
-    content: (
-      <StyledTypographyMain variant="h6">Preferences</StyledTypographyMain>
-    ),
-    active: false,
-  },
-  {
-    label: 'Security',
-    content: <StyledTypographyMain variant="h6">Security</StyledTypographyMain>,
-    active: false,
-  },
-];
+import { StyledCard } from '_styledComponents';
 
 const SettingPage = () => {
+  const profileComp = <ProfileSection />;
   return (
     <Box
       sx={{
@@ -32,7 +13,12 @@ const SettingPage = () => {
       }}
     >
       <StyledCard sx={{ padding: '2rem' }}>
-        <BasicTabs tabData={TabData} />
+        <BasicTabs
+          tabData={TabData.map((tab) => ({
+            ...tab,
+            content: tab.active ? profileComp : null,
+          }))}
+        />
       </StyledCard>
     </Box>
   );

@@ -33,23 +33,14 @@ import { StyledTypographyMain } from '_styledComponents';
 import { useNavigate } from 'react-router-dom';
 import { AppBarCustom } from '_lib';
 import { menuItemInterface } from '_interfaces';
+import { menuItem } from '_constants';
 
 const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const menuItems: menuItemInterface[] = [
-    { label: 'Dashboard', icon: 'dashboard', name: 'dashboard' },
-    { label: 'Transactions', icon: 'txns', name: 'transactions' },
-    { label: 'Accounts', icon: 'accounts', name: 'accounts' },
-    { label: 'Investments', icon: 'investments', name: 'investments' },
-    { label: 'Credit Cards', icon: 'cc', name: 'cc' },
-    { label: 'Loans', icon: 'loans', name: 'loans' },
-    { label: 'Services', icon: 'services', name: 'services' },
-    { label: 'My Privileges', icon: 'privileges', name: 'privileges' },
-    { label: 'Setting', icon: 'setting', name: 'setting' },
-  ];
+  const menuItems: menuItemInterface[] = menuItem;
   const navigate = useNavigate();
-  const [header, setHeader] = useState(menuItems[0]);
+  const [header, setHeader] = useState<menuItemInterface>(menuItems[0]);
   const dashboardIcon =
     header.icon === 'dashboard' ? dashboardActive : dashboardInactive;
   const settingIcon =
@@ -105,7 +96,7 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
             >
               <ListItemIcon>
                 <LogoIconComponent
-                  src={iconMap[text.icon]}
+                  src={iconMap[text.icon as keyof typeof iconMap]}
                   width={'2rem'}
                   height={'2rem'}
                 />

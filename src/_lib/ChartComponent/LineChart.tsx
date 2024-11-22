@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -13,9 +13,10 @@ import {
   RadialLinearScale,
   Filler,
   Point,
+  ChartOptions,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import ChartDataLabels, { Context } from 'chartjs-plugin-datalabels'; // Import the plugin
+import ChartDataLabels from 'chartjs-plugin-datalabels'; // Import the plugin
 
 // Register the necessary components
 ChartJS.register(
@@ -70,7 +71,7 @@ const LineChart = () => {
     chart.data.datasets[0].backgroundColor = gradient;
   };
 
-  const options = {
+  const options: ChartOptions<'line'> = {
     scales: {
       y: {
         beginAtZero: true,
@@ -85,7 +86,7 @@ const LineChart = () => {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
-      datalabel: {
+      datalabels: {
         display: 'auto',
       },
       legend: {
