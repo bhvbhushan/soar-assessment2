@@ -26,6 +26,15 @@ declare module '@mui/material/Typography' {
 }
 
 let theme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 1100,
+      lg: 1400,
+      xl: 1800,
+    },
+  },
   typography: {
     fontFamily: 'Inter, sans-serif', // Your preferred font family
     h1: {

@@ -78,11 +78,12 @@ const ProfileSection = () => {
       <Box
         sx={{
           display: 'flex',
-          flexDirection: { sm: 'column', xs: 'row' },
+          flexDirection: 'column',
           gap: 5,
+          flex: 1,
         }}
       >
-        <Grid container spacing={5}>
+        <Grid container spacing={5} size={12}>
           {[...Object.keys(fieldLabelMapping)].map((key) => {
             const field = key as FieldKey;
             return (
@@ -94,7 +95,13 @@ const ProfileSection = () => {
             );
           })}
         </Grid>
-        <StyledButton sx={{ alignSelf: 'flex-end' }}>Save</StyledButton>
+        <StyledButton
+          sx={{
+            alignSelf: { sm: 'flex-end', xs: 'stretch' },
+          }}
+        >
+          Save
+        </StyledButton>
       </Box>
     </Box>
   );

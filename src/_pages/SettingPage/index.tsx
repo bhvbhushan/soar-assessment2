@@ -9,10 +9,10 @@ const SettingPage = () => {
     <Box
       sx={{
         display: 'flex',
-        padding: '2rem',
+        padding: { sm: '2rem', xs: '0' },
       }}
     >
-      <StyledCard sx={{ padding: '2rem' }}>
+      <StyledCard sx={{ padding: { sm: '2rem', xs: '0.5rem' } }} isFullScreen>
         <BasicTabs
           tabData={TabData.map((tab) => ({
             ...tab,

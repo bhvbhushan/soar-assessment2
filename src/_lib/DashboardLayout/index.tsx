@@ -58,18 +58,21 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
   };
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isTab = useMediaQuery(theme.breakpoints.down('md')) && !isMobile;
+  const displayDrawer = !isMobile && !isTab ? true : false;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const drawerWidth = isMobile ? 240 : '20%';
-  const appbarWidth = isMobile ? '100%' : '80%';
+  const drawerWidth = !displayDrawer ? 240 : '20%';
+  const appbarWidth = !displayDrawer ? '100%' : '80%';
 
   const handleDrawerToggle = () => {
+    console.log({ mobileOpen, isTab, isMobile });
     setMobileOpen(!mobileOpen);
   };
 
   const menuClickHandler = (text: menuItemInterface) => {
     setHeader(text);
     navigate(`/${text.name}`);
-    if (isMobile) setMobileOpen(false);
+    if (isMobile || isTab) setMobileOpen(false);
   };
 
   const drawer = (
@@ -129,14 +132,28 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
       <AppBarCustom
         header={header}
         isMobile={isMobile}
+        isTab={isTab}
         appbarWidth={appbarWidth}
         handleDrawerToggle={handleDrawerToggle}
       />
 
       {/* Drawer */}
       <nav aria-label="mailbox folders">
-        {/* Temporary drawer for mobile */}
-        {isMobile && (
+        {displayDrawer ? (
+          <Drawer
+            variant="permanent"
+            sx={{
+              display: { md: 'none', lg: 'block' },
+              '& .MuiDrawer-paper': {
+                boxSizing: 'border-box',
+                width: drawerWidth,
+              },
+            }}
+            open
+          >
+            {drawer}
+          </Drawer>
+        ) : (
           <Drawer
             variant="temporary"
             open={mobileOpen}
@@ -145,28 +162,12 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
               keepMounted: true, // Better open performance on mobile.
             }}
             sx={{
-              display: { xs: 'block', sm: 'none' },
+              display: { sm: 'block', md: 'none' },
               '& .MuiDrawer-paper': {
                 boxSizing: 'border-box',
                 width: drawerWidth,
               },
             }}
-          >
-            {drawer}
-          </Drawer>
-        )}
-        {/* Permanent drawer for desktop */}
-        {!isMobile && (
-          <Drawer
-            variant="permanent"
-            sx={{
-              display: { xs: 'none', sm: 'block' },
-              '& .MuiDrawer-paper': {
-                boxSizing: 'border-box',
-                width: drawerWidth,
-              },
-            }}
-            open
           >
             {drawer}
           </Drawer>

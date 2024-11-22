@@ -11,6 +11,7 @@ import { menuItemInterface } from '_interfaces';
 interface appBarProps {
   appbarWidth: string;
   isMobile: boolean;
+  isTab: boolean;
   handleDrawerToggle: () => void;
   header: menuItemInterface;
 }
@@ -18,9 +19,14 @@ interface appBarProps {
 interface appBarSmProps {
   handleDrawerToggle: () => void;
   header: menuItemInterface;
+  isTab?: boolean;
 }
 
-const appBarLg: React.FC<{ header: menuItemInterface }> = ({ header }) => {
+const appBarLg: React.FC<appBarSmProps> = ({
+  header,
+  handleDrawerToggle,
+  isTab,
+}) => {
   return (
     <>
       <Box
@@ -30,6 +36,17 @@ const appBarLg: React.FC<{ header: menuItemInterface }> = ({ header }) => {
           alignItems: 'center',
         }}
       >
+        {isTab && (
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{ mr: 2 }}
+          >
+            <MenuIcon />
+          </IconButton>
+        )}
         <Typography variant="h6" noWrap component="div">
           {header.label}
         </Typography>
@@ -97,6 +114,7 @@ const appBarSm: React.FC<appBarSmProps> = ({ handleDrawerToggle, header }) => {
 const AppBarCustom: React.FC<appBarProps> = ({
   appbarWidth,
   isMobile,
+  isTab,
   handleDrawerToggle,
   header,
 }) => (
@@ -107,7 +125,7 @@ const AppBarCustom: React.FC<appBarProps> = ({
       >
         {isMobile
           ? appBarSm({ handleDrawerToggle, header })
-          : appBarLg({ header })}
+          : appBarLg({ header, handleDrawerToggle, isTab })}
       </Toolbar>
     </AppBar>
   </>

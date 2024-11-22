@@ -16,7 +16,7 @@ const FormDataComponent: React.FC<formDataInterface> = ({
   inputData,
 }) => {
   return (
-    <Grid size={{ sm: 12, md: 6 }}>
+    <Grid size={{ sm: 12, md: 6 }} flexGrow={1}>
       <Box sx={{ fontSize: '1rem' }}>
         <StyledTypographyMain variant="h6">{label}</StyledTypographyMain>
         {inputType === 'date' ? (
