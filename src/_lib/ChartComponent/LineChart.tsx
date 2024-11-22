@@ -14,9 +14,12 @@ import {
   Filler,
   Point,
   ChartOptions,
+  ChartData,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels'; // Import the plugin
+import { color } from '_constants';
+import { useTheme } from '@mui/material';
 
 // Register the necessary components
 ChartJS.register(
@@ -34,20 +37,14 @@ ChartJS.register(
   ChartDataLabels
 );
 
-const data = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-  datasets: [
-    {
-      label: 'Sales ($)',
-      data: [3000, 2000, 4000, 1000, 6000, 2000],
-      borderColor: '#1716f1',
-      fill: true,
-      tension: 0.3,
-    },
-  ],
-};
+interface chartProps {
+  colorPalette: color[];
+  data: ChartData<'line'>;
+}
 
-const LineChart = () => {
+// This currently supports ONLY 1 datasets at a time, due to restrictive Gradient feature
+const LineChart: React.FC<chartProps> = ({ data }) => {
+  const theme = useTheme();
   const chartRef = useRef<ChartJS<'line'>>(null);
   const createGradient = (chart: ChartJS<'line'>) => {
     const ctx = chart.ctx;
@@ -65,9 +62,9 @@ const LineChart = () => {
       chartArea.right,
       0
     );
-    gradient.addColorStop(0, '#ccd8ff');
-    gradient.addColorStop(1, '#ffffff');
-
+    gradient.addColorStop(0, theme.palette.chart.blue.main);
+    gradient.addColorStop(1, theme.palette.background.paper);
+    chart.data.datasets[0].borderColor = theme.palette.chart.blue.main;
     chart.data.datasets[0].backgroundColor = gradient;
   };
 

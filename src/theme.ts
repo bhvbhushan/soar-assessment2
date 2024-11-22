@@ -9,15 +9,32 @@ declare module '@mui/material/styles' {
       debit: string;
       credit: string;
     };
-
-    // chart:{
-
-    // }
+    chart: {
+      blue: {
+        main: string;
+        extradark: string;
+        dark: string;
+      };
+      orange: {
+        main: string;
+      };
+    };
   }
+
   interface PaletteOptions {
     transaction?: {
       debit?: string;
       credit?: string;
+    };
+    chart?: {
+      blue?: {
+        main?: string;
+        extradark?: string;
+        dark?: string;
+      };
+      orange?: {
+        main?: string;
+      };
     };
   }
 }
@@ -74,7 +91,6 @@ let theme = createTheme({
     primary: {
       main: '#343C6A', // Your primary color
       light: '#718EBF',
-
       dark: '#0056b3',
     },
     secondary: {
@@ -87,6 +103,16 @@ let theme = createTheme({
     transaction: {
       debit: '#FF4B4A',
       credit: '#41D4A8',
+    },
+    chart: {
+      blue: {
+        main: '#396aff',
+        dark: '#343C6A',
+        extradark: '#232323',
+      },
+      orange: {
+        main: '#FC7900',
+      },
     },
   },
 });

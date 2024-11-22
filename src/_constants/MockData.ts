@@ -99,18 +99,49 @@ export const contactData = [
   },
 ];
 
-export const barData = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-  datasets: [
-    {
-      label: 'Sales ($)',
-      data: [3000, 2000, 4000, 5000, 3000, 6000],
-      backgroundColor: 'rgba(75, 192, 192, 0.5)',
-    },
-    {
-      label: 'Revenue ($)',
-      data: [3000, 2000, 4000, 5000, 3000, 6000],
-      backgroundColor: 'rgba(75, 122, 102, 0.5)',
-    },
-  ],
+export const weeklyTxnData = {
+  Sat: {
+    Deposit: 500,
+    Withdraw: 300,
+  },
+  Sun: {
+    Deposit: 600,
+    Withdraw: 100,
+  },
+  Mon: {
+    Deposit: 200,
+    Withdraw: 565,
+  },
+  Tue: {
+    Deposit: 50,
+    Withdraw: 587,
+  },
+  Wed: {
+    Deposit: 0,
+    Withdraw: 300,
+  },
+  Thu: {
+    Deposit: 456,
+    Withdraw: 0,
+  },
+  Fri: {
+    Deposit: 500,
+    Withdraw: 600,
+  },
+};
+
+export const monthlyBalanceData = {
+  Jan: 3000,
+  Feb: 2000,
+  Mar: 4000,
+  Apr: 1000,
+  May: 6000,
+  Jun: 2000,
+};
+
+export const expenseCategoryData = {
+  Entertainment: 2200,
+  Investment: 1500,
+  'Bill Expense': 1800,
+  Others: 1387,
 };

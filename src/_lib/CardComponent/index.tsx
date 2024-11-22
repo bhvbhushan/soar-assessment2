@@ -33,6 +33,9 @@ const CardComponent: React.FC<cardComponentProps> = ({ isFocused }) => {
           background: backgroundMain,
           p: '1rem',
           height: '70%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-around',
         }}
       >
         <StyledStack>
@@ -53,7 +56,11 @@ const CardComponent: React.FC<cardComponentProps> = ({ isFocused }) => {
             </StyledTypographyMain>
           </Box>
           <Box>
-            <LogoIconComponent src={chipLogo} height={'2rem'} width={'2rem'} />
+            <LogoIconComponent
+              src={chipLogo}
+              height={'2.5rem'}
+              width={'2.5rem'}
+            />
           </Box>
         </StyledStack>
         <StyledStack>
@@ -98,7 +105,7 @@ const CardComponent: React.FC<cardComponentProps> = ({ isFocused }) => {
           flexDirection: 'row',
           justifyContent: 'space-between',
           alignItems: 'center',
-          p: 1,
+          p: '1rem',
           borderTop: `1px solid ${isFocused ? backgroundSecondary : '#DFEAF2'}`,
           height: '30%',
         }}
@@ -110,7 +117,7 @@ const CardComponent: React.FC<cardComponentProps> = ({ isFocused }) => {
         >
           3778 **** *** 1234
         </StyledTypographyMain>
-        <LogoIconComponent src={cardLogo} height={'1.5rem'} width={'2rem'} />
+        <LogoIconComponent src={cardLogo} height={'2rem'} width={'3rem'} />
       </Box>
     </>
   );

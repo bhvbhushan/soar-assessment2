@@ -1,24 +1,60 @@
-import { Box } from '@mui/material';
+import { Box, useTheme } from '@mui/material';
 import BarChart from './BarChart';
 import PieChart from './PieChart';
 import LineChart from './LineChart';
-import { barData } from '_constants';
+import { color } from '_constants';
 import React from 'react';
+import { transformChartData } from '_helpers';
+import { nestedData } from '_interfaces';
+import { ChartData } from 'chart.js';
 
-const ChartComponent: React.FC<{ type: string }> = ({ type }) => {
-  const data = barData;
+interface chartPropsInterface {
+  type: string;
+  data: nestedData;
+}
+
+const ChartComponent: React.FC<chartPropsInterface> = ({ type, data }) => {
+  const chartData = transformChartData(data);
+  const theme = useTheme();
+  // This could be generalized further by writing a helper function to generate this
+  const colorPalette: color[] = [
+    ...Object.values(theme.palette.chart.blue),
+    ...Object.values(theme.palette.chart.orange),
+  ];
   const getChart = (type: string) => {
     switch (type) {
       case 'bar':
-        return <BarChart data={data} />;
+        return (
+          <BarChart
+            data={chartData as ChartData<'bar'>}
+            colorPalette={colorPalette}
+          />
+        );
       case 'pie':
-        return <PieChart />;
+        return (
+          <PieChart
+            colorPalette={colorPalette}
+            data={chartData as ChartData<'pie'>}
+          />
+        );
       case 'line':
-        return <LineChart />;
+        return (
+          <LineChart
+            colorPalette={colorPalette}
+            data={chartData as ChartData<'line'>}
+          />
+        );
       default:
-        return <BarChart data={data} />;
+        return (
+          <BarChart
+            data={chartData as ChartData<'bar'>}
+            colorPalette={colorPalette}
+          />
+        );
     }
   };
+
+  console.log({ chart: getChart(type) });
 
   return (
     <Box

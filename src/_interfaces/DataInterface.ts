@@ -39,3 +39,8 @@ export interface tabStrucureInterface {
   content?: React.ReactNode;
   active: boolean;
 }
+
+export interface nestedData {
+  // Allowing only 1 level of Nesting
+  [key: string]: string | number | { [key: string]: string | number };
+}

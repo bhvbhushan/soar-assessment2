@@ -23,7 +23,7 @@ const ModuleComponent: React.FC<moduleCompProps> = ({
   width,
 }) => {
   return (
-    <ModuleWrapper width={width}>
+    <ModuleWrapper width={width} sx={{ gap: 3 }}>
       <Box
         sx={{
           display: 'flex',
@@ -31,7 +31,7 @@ const ModuleComponent: React.FC<moduleCompProps> = ({
           width: '100%',
         }}
       >
-        <StyledTypographyMain variant="h6">
+        <StyledTypographyMain variant="h5">
           {primaryHeader}
         </StyledTypographyMain>
         {btnComp}

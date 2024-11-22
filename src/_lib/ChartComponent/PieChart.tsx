@@ -12,11 +12,17 @@ import {
   RadialLinearScale,
   Filler,
   ChartOptions,
+  ChartData,
 } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import ChartDataLabels, { Context } from 'chartjs-plugin-datalabels'; // Import the plugin
 
-import { getRandomNum } from '_helpers';
+import {
+  generateColorsForLabels,
+  getPiePcntData,
+  getRandomNum,
+} from '_helpers';
+import { color } from '_constants';
 // Register the necessary components
 ChartJS.register(
   CategoryScale,
@@ -33,43 +39,53 @@ ChartJS.register(
   ChartDataLabels
 );
 
-const PieChart = () => {
-  const labels = ['Red', 'Blue', 'Yellow', 'Green'];
-  const offsets = labels.map(() => getRandomNum(25, 50));
-  console.log({ offsets });
-  const data = {
-    labels: labels,
-    datasets: [
-      {
-        label: 'My First Dataset',
-        data: [150, 50, 100, 80],
-        backgroundColor: [
-          'rgb(255, 99, 132)',
-          'rgb(54, 162, 235)',
-          'rgb(255, 205, 86)',
-        ],
+interface chartProps {
+  colorPalette: color[];
+  data: ChartData<'pie'>;
+}
+
+const PieChart: React.FC<chartProps> = ({ colorPalette, data }) => {
+  const labels = data['labels'] ? data['labels'] : undefined;
+  if (!labels) return;
+
+  const offset = labels?.map(() => getRandomNum(25, 50));
+
+  const updatedData = {
+    ...data,
+    datasets: data.datasets.map((dataset) => {
+      return {
+        ...dataset,
+        // data: getPiePcntData(dataset.data),
+        backgroundColor: generateColorsForLabels(
+          labels as string[],
+          colorPalette
+        ),
         hoverOffset: 4,
-        offset: offsets,
-      },
-    ],
+        offset,
+      };
+    }),
   };
+
+  console.log({ updatedData });
 
   const options: ChartOptions<'pie'> = {
     plugins: {
       datalabels: {
         // This plugin's configuration
         color: '#fff', // Text color
-        formatter: (value: string, context: Context) => {
+        formatter: (_value: string, context: Context) => {
+          console.log({ context: context.dataset.data });
+          const dataVal = getPiePcntData([...context.dataset.data] as number[]);
           const label = context.chart.data.labels
             ? context.chart.data.labels[context.dataIndex]
             : null;
-          return `${value}\n${label}`;
+          return `${dataVal[context.dataIndex]}\n${label}`;
         },
         anchor: 'center',
-        textAlign: 'center',
+        textAlign: 'right',
         font: {
           weight: 'bold',
-          size: 14,
+          size: 12,
         },
       },
       legend: {
@@ -92,7 +108,7 @@ const PieChart = () => {
       },
     },
   };
-  return <Pie data={data} options={options} />;
+  return <Pie data={updatedData} options={options} />;
 };
 
 export default PieChart;

@@ -1,3 +1,5 @@
+import { color } from '_constants';
+import { getRandomColor } from '_helpers';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -32,8 +34,19 @@ ChartJS.register(
   Filler,
   ChartDataLabels
 );
+interface chartProps {
+  colorPalette: color[];
+  data: ChartData<'bar'>;
+}
 
-const BarChart: React.FC<{ data: ChartData<'bar'> }> = ({ data }) => {
+const BarChart: React.FC<chartProps> = ({ data, colorPalette }) => {
+  data = {
+    ...data,
+    datasets: data.datasets.map((ds, idx) => ({
+      ...ds,
+      backgroundColor: colorPalette[idx] ? colorPalette[idx] : getRandomColor(),
+    })),
+  };
   const options: ChartOptions<'bar'> = {
     scales: {
       y: {
