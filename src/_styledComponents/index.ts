@@ -4,3 +4,5 @@ export * from './CreditCard';
 export * from './Card';
 export * from './ModuleWrapper';
 export * from './SectionWrapper';
+export * from './SearchInput';
+export * from './IconWrapper';

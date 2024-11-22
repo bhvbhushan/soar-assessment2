@@ -14,6 +14,7 @@ import ChartWrapperComponent from './ChartWrapperComponent';
 import CarousalComponent from './CarousalComponent';
 import TransferModule from './TransferModule';
 import TransferIconComponent from './TransferIconComponent';
+import AppBarCustom from './AppBar';
 
 export {
   DashboardLayoutComponent,
@@ -32,4 +33,5 @@ export {
   CarousalComponent,
   TransferModule,
   TransferIconComponent,
+  AppBarCustom,
 };

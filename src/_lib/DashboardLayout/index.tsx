@@ -15,6 +15,7 @@ import {
   Container,
   ListItemButton,
   ListItemIcon,
+  Box,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import dashboardActive from 'assets/dashboardActive.png';
@@ -28,9 +29,18 @@ import cc from 'assets/cc.png';
 import loans from 'assets/loans.png';
 import services from 'assets/services.png';
 import privileges from 'assets/privileges.png';
+import CompanyLogo from 'assets/CompanyLogo.png';
 import LogoIconComponent from '_lib/LogoIconComponent';
-import { StyledTypographyMain } from '_styledComponents';
+import settingLogo from 'assets/settingIconHeader.png';
+import notificationLogo from 'assets/notification.png';
+import userLogo from 'assets/user.png';
+import {
+  IconWrapper,
+  SearchInput,
+  StyledTypographyMain,
+} from '_styledComponents';
 import { useNavigate } from 'react-router-dom';
+import { AppBarCustom } from '_lib';
 
 const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -81,8 +91,13 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
 
   const drawer = (
     <div>
-      <Toolbar>
-        <Typography variant="h6" noWrap>
+      <Toolbar sx={{ py: '1rem' }}>
+        <LogoIconComponent
+          src={CompanyLogo}
+          height={'2.5rem'}
+          width={'2.5rem'}
+        />
+        <Typography variant="h5" noWrap>
           Soar Task
         </Typography>
       </Toolbar>
@@ -128,28 +143,12 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
       }}
     >
       <CssBaseline />
-      <AppBar
-        position="fixed"
-        sx={{ width: appbarWidth, m: 0 }}
-        color="inherit"
-      >
-        <Toolbar>
-          {isMobile && (
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="start"
-              onClick={handleDrawerToggle}
-              sx={{ mr: 2 }}
-            >
-              <MenuIcon />
-            </IconButton>
-          )}
-          <Typography variant="h6" noWrap component="div">
-            {header.label}
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <AppBarCustom
+        header={header}
+        isMobile={isMobile}
+        appbarWidth={appbarWidth}
+        handleDrawerToggle={handleDrawerToggle}
+      />
 
       {/* Drawer */}
       <nav aria-label="mailbox folders">
@@ -192,6 +191,13 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
       </nav>
       <Toolbar />
       <Toolbar />
+      {isMobile && (
+        <>
+          <Toolbar />
+          <Toolbar />
+          <Toolbar />
+        </>
+      )}
 
       {/* Main content */}
       <Container
