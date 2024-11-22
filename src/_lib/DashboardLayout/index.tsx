@@ -83,7 +83,7 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
           height={'2.5rem'}
           width={'2.5rem'}
         />
-        <Typography variant="h5" noWrap>
+        <Typography variant="h4" noWrap>
           Soar Task
         </Typography>
       </Toolbar>

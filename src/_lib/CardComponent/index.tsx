@@ -38,14 +38,14 @@ const CardComponent: React.FC<cardComponentProps> = ({ isFocused }) => {
         <StyledStack>
           <Box>
             <StyledTypographyLight
-              variant="body1"
+              variant="subtitle1"
               isFocused={isFocused}
               focusedColor={focussedColor}
             >
               Balance
             </StyledTypographyLight>
             <StyledTypographyMain
-              variant="h6"
+              variant="h5"
               isFocused={isFocused}
               focusedColor={focussedColor}
             >
@@ -59,14 +59,14 @@ const CardComponent: React.FC<cardComponentProps> = ({ isFocused }) => {
         <StyledStack>
           <Box>
             <StyledTypographyLight
-              variant="body1"
+              variant="subtitle1"
               isFocused={isFocused}
               focusedColor={focussedColor}
             >
               CARD HOLDER
             </StyledTypographyLight>
             <StyledTypographyMain
-              variant="h6"
+              variant="body1"
               isFocused={isFocused}
               focusedColor={focussedColor}
             >
@@ -75,14 +75,14 @@ const CardComponent: React.FC<cardComponentProps> = ({ isFocused }) => {
           </Box>
           <Box>
             <StyledTypographyLight
-              variant="body1"
+              variant="subtitle1"
               isFocused={isFocused}
               focusedColor={focussedColor}
             >
               VALID THRU
             </StyledTypographyLight>
             <StyledTypographyMain
-              variant="h6"
+              variant="body1"
               isFocused={isFocused}
               focusedColor={focussedColor}
             >
@@ -97,13 +97,14 @@ const CardComponent: React.FC<cardComponentProps> = ({ isFocused }) => {
           display: 'flex',
           flexDirection: 'row',
           justifyContent: 'space-between',
+          alignItems: 'center',
           p: 1,
           borderTop: `1px solid ${isFocused ? backgroundSecondary : '#DFEAF2'}`,
           height: '30%',
         }}
       >
         <StyledTypographyMain
-          variant="h6"
+          variant="h4"
           isFocused={isFocused}
           focusedColor={focussedColor}
         >

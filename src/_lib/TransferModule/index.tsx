@@ -22,7 +22,7 @@ const TransferModule = () => {
           display={'flex'}
           sx={{ justifyContent: 'center', alignItems: 'center', gap: 5 }}
         >
-          <StyledTypographyLight variant="caption">
+          <StyledTypographyLight variant="body1">
             Write Amount
           </StyledTypographyLight>
           <Box
@@ -30,7 +30,7 @@ const TransferModule = () => {
               display: 'flex',
               alignItems: 'center',
               borderRadius: '20px', // Rounded corners
-              backgroundColor: '#e0e0e0', // Light gray background
+              backgroundColor: theme.palette.secondary.main, // Light gray background
               pl: '1rem',
               width: '300px', // Adjust width as needed
             }}

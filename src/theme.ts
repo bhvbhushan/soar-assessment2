@@ -9,6 +9,10 @@ declare module '@mui/material/styles' {
       debit: string;
       credit: string;
     };
+
+    // chart:{
+
+    // }
   }
   interface PaletteOptions {
     transaction?: {
@@ -37,18 +41,34 @@ let theme = createTheme({
   },
   typography: {
     fontFamily: 'Inter, sans-serif', // Your preferred font family
-    h1: {
-      fontSize: '3rem',
-      fontWeight: 700,
+    h4: {
+      fontSize: '1.75rem',
+      fontWeight: 800,
     },
-    h2: {
-      fontSize: '2.5rem',
+    h5: {
+      fontSize: '1.5rem',
       fontWeight: 600,
     },
+    h6: {
+      fontSize: '1.25rem',
+      fontWeight: 500,
+    },
     body1: {
+      fontSize: '1rem',
+      fontWeight: 500,
+    },
+    body2: {
+      fontSize: '0.9rem',
+    },
+    subtitle1: {
+      fontSize: '0.8rem',
+    },
+    subtitle2: {
       fontSize: '0.7rem',
     },
-    // ... other font size definitions
+    caption: {
+      fontSize: '0.6rem',
+    },
   },
   palette: {
     primary: {
@@ -58,10 +78,10 @@ let theme = createTheme({
       dark: '#0056b3',
     },
     secondary: {
-      main: '#FF4B4A', // Your secondary color
+      main: '#edf1f9', // Your secondary color
     },
     background: {
-      default: '#f8f9fa', // Your default background color
+      default: '#f5f7fb', // Your default background color
       paper: '#ffffff', // Background color for paper-like components
     },
     transaction: {

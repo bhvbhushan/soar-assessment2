@@ -3,10 +3,10 @@ import { alpha, styled } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 
 const Search = styled(Box)(({ theme }) => ({
-  color: '#718EBF',
+  color: theme.palette.primary.light,
   position: 'relative',
   borderRadius: '25px',
-  backgroundColor: '#f5f7fb',
+  backgroundColor: theme.palette.background.default,
   flex: 1,
   justifyContent: 'center',
   alignItems: 'center',
@@ -59,10 +59,7 @@ export const SearchInput = () => {
       <SearchIconWrapper>
         <SearchIcon />
       </SearchIconWrapper>
-      <StyledInputBase
-        placeholder="Search…"
-        inputProps={{ 'aria-label': 'search' }}
-      />
+      <StyledInputBase placeholder="Search…" />
     </Search>
   );
 };

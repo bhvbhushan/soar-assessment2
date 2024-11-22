@@ -31,21 +31,25 @@ const MultiItemCarousel = () => {
           disableOnInteraction: false,
         }}
         breakpoints={{
-          320: {
-            slidesPerView: 2,
-            spaceBetween: 20,
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 5,
           },
-          480: {
-            slidesPerView: 2,
-            spaceBetween: 30,
+          600: {
+            slidesPerView: 1,
+            spaceBetween: 5,
           },
-          768: {
+          1100: {
+            slidesPerView: 2,
+            spaceBetween: 5,
+          },
+          1400: {
             slidesPerView: 3,
-            spaceBetween: 30,
+            spaceBetween: 5,
           },
-          1024: {
+          1800: {
             slidesPerView: 4,
-            spaceBetween: 30,
+            spaceBetween: 5,
           },
         }}
       >

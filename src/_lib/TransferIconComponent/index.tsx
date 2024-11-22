@@ -1,4 +1,4 @@
-import { Box, Button } from '@mui/material';
+import { Box, Button, useTheme } from '@mui/material';
 import { contactInterface } from '_interfaces';
 import LogoIconComponent from '_lib/LogoIconComponent';
 import { StyledTypographyLight, StyledTypographyMain } from '_styledComponents';
@@ -13,6 +13,7 @@ import React from 'react';
 const TransferIconComponent: React.FC<{ item: contactInterface }> = ({
   item,
 }) => {
+  const theme = useTheme();
   const iconMap = {
     livia: LiviaLogo,
     randy: RandyLogo,
@@ -29,7 +30,7 @@ const TransferIconComponent: React.FC<{ item: contactInterface }> = ({
         display: 'flex',
         flexDirection: 'column',
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: theme.palette.background.paper,
         transition: 'transform 0.3s',
         '&:hover': {
           transform: 'scale(1.25)',
@@ -45,14 +46,10 @@ const TransferIconComponent: React.FC<{ item: contactInterface }> = ({
           height={'4rem'}
           width={'4rem'}
         />
-        <StyledTypographyMain variant="caption" className="childTypography">
+        <StyledTypographyMain variant="body1" className="childTypography">
           {item.name}
         </StyledTypographyMain>
-        <StyledTypographyLight
-          variant="body2"
-          className="childTypography"
-          sx={{ fontSize: '0.6rem' }}
-        >
+        <StyledTypographyLight variant="body2" className="childTypography">
           {item.role}
         </StyledTypographyLight>
       </Button>

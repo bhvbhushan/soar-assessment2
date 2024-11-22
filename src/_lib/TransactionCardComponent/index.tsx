@@ -42,10 +42,10 @@ const TransactionCardComponent: React.FC<trxCardProps> = ({ trx }) => {
             ml: '0.5rem',
           }}
         >
-          <StyledTypographyMain variant="subtitle2">
+          <StyledTypographyMain variant="body1" sx={{ fontWeight: 600 }}>
             {trx.description}
           </StyledTypographyMain>
-          <StyledTypographyLight variant="body1">
+          <StyledTypographyLight variant="body2">
             {trx.date}
           </StyledTypographyLight>
         </Box>
