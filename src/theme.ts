@@ -60,7 +60,7 @@ let theme = createTheme({
     fontFamily: 'Inter, sans-serif', // Your preferred font family
     h4: {
       fontSize: '1.75rem',
-      fontWeight: 800,
+      fontWeight: 600,
     },
     h5: {
       fontSize: '1.5rem',

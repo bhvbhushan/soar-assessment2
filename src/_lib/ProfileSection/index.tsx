@@ -37,8 +37,6 @@ const ProfileSection: React.FC<UserEditFormProps> = ({ user, onUpdate }) => {
     Partial<Record<keyof userDataInterface, string>>
   >({});
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  // const [serverError, setServerError] = useState<string | null>(null);
-  // const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   // Handle input changes
   const handleChange = (

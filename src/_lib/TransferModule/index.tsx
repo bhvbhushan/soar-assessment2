@@ -9,6 +9,7 @@ import { contactInterface } from '_interfaces';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { getAllContacts, sendMoney } from '_controllers';
 import { useAlert } from '_context';
+import { formatAmount } from '_helpers';
 
 const TransferModule = () => {
   const [contacts, setContacts] = useState<contactInterface[]>([]);
@@ -34,7 +35,9 @@ const TransferModule = () => {
       name: selectedContact.name,
     });
     if (success) {
-      showSuccess(`Amount: $${amount} transferred to ${selectedContact.name}`);
+      showSuccess(
+        `Amount: $${formatAmount(amount)} transferred to ${selectedContact.name}`
+      );
       setSelectedContact(null);
       setAmount(null);
     } else {

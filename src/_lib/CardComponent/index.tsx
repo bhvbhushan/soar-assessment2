@@ -42,6 +42,7 @@ const CardComponent: React.FC<cardComponentProps> = ({
           p: '1rem',
           height: '70%',
           display: 'flex',
+          flex: 1,
           flexDirection: 'column',
           justifyContent: 'space-around',
         }}
@@ -119,9 +120,10 @@ const CardComponent: React.FC<cardComponentProps> = ({
         }}
       >
         <StyledTypographyMain
-          variant="h4"
+          variant="h5"
           isFocused={isFocused}
           focusedColor={focussedColor}
+          // noWrap
         >
           {cardData.cardNumber}
         </StyledTypographyMain>

@@ -31,7 +31,7 @@ const TransactionCardComponent: React.FC<trxCardProps> = ({ trx }) => {
   return (
     <Box
       display={'flex'}
-      sx={{ justifyContent: 'space-between', my: '1rem', p: '0.5rem' }}
+      sx={{ justifyContent: 'space-between', my: '1rem', px: '1rem' }}
     >
       <Box display={'flex'}>
         {trxLogo(trx.icon)}
