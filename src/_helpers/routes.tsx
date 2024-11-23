@@ -23,8 +23,6 @@ export const generateRoutes = (
       element: <Navigate to={AppRouteStructure.fallbackPath} replace />,
     });
   }
-
-  console.log({ dynamicRoutes });
   return dynamicRoutes;
 };
 

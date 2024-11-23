@@ -1,22 +1,13 @@
 import { Box } from '@mui/material';
 import { TabData } from '_constants';
 import { useUser } from '_context';
-import { userDataInterface } from '_interfaces';
 import { BasicTabs, ProfileSection } from '_lib';
 import { StyledCard } from '_styledComponents';
 
 const SettingPage = () => {
   const { state } = useUser();
-  const onUserDataUpdate = (user: userDataInterface) => {
-    console.log({ user });
-  };
-  const profileComp = (
-    <>
-      {state.user && (
-        <ProfileSection user={state.user} onUpdate={onUserDataUpdate} />
-      )}
-    </>
-  );
+
+  const profileComp = <>{state.user && <ProfileSection user={state.user} />}</>;
   return (
     <Box
       sx={{

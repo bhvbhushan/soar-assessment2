@@ -44,7 +44,6 @@ interface chartProps {
 
 // This currently supports ONLY 1 datasets at a time, due to restrictive Gradient feature
 const LineChart: React.FC<chartProps> = ({ data }) => {
-  console.log({ data });
   const theme = useTheme();
   const chartRef = useRef<ChartJS<'line'>>(null);
   const createGradient = (chart: ChartJS<'line'>) => {
@@ -102,7 +101,6 @@ const LineChart: React.FC<chartProps> = ({ data }) => {
 
     createGradient(chart);
     chart.update();
-    console.log({ chart });
   }, []);
   return <Line ref={chartRef} data={data} options={options} />;
 };

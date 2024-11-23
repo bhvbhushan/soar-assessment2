@@ -14,7 +14,6 @@ const CustomTextField = React.forwardRef(
 );
 
 const DatePickerComponent: React.FC<{ val: string }> = ({ val }) => {
-  console.log({ val });
   const [value, setValue] = useState<Dayjs | null>(dayjs(val));
 
   return (

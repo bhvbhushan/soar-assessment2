@@ -17,7 +17,6 @@ const AppLayout: React.FC = () => {
       AppRouteStructure,
     })
   );
-  console.log({ routes });
   return (
     <>
       <AppContentView routes={routes} />

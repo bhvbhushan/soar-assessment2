@@ -46,7 +46,6 @@ export const validationSchema = yup.object().shape({
     .mixed()
     .test('fileSize', 'File Size is too large (max 5MB)', (value) => {
       if (!value) return true; // Attachment is optional
-      console.log({ value });
       return (value as File).size <= 5 * 1024 * 1024;
     })
     .test('fileType', 'Unsupported File Format', (value) => {

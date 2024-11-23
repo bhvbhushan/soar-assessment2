@@ -73,7 +73,6 @@ const PieChart: React.FC<chartProps> = ({ colorPalette, data }) => {
         // This plugin's configuration
         color: '#fff', // Text color
         formatter: (_value: string, context: Context) => {
-          console.log({ context: context.dataset.data });
           const dataVal = getPiePcntData([...context.dataset.data] as number[]);
           const label = context.chart.data.labels
             ? context.chart.data.labels[context.dataIndex]

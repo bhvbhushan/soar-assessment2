@@ -20,7 +20,6 @@ const alias = directories.reduce((acc: Record<string, string>, dir: string) => {
   acc[`${dir}`] = path.resolve(srcPath, dir);
   return acc;
 }, {});
-console.log({ alias });
 
 // https://vitejs.dev/config/
 export default ({ mode }: { mode: string }) => {

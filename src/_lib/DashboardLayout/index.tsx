@@ -91,7 +91,6 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
   }, [userDispatch, showError]);
 
   const handleDrawerToggle = () => {
-    console.log({ mobileOpen, isTab, isMobile });
     setMobileOpen(!mobileOpen);
   };
 

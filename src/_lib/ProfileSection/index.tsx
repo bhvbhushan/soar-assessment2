@@ -14,7 +14,6 @@ type FieldKey = keyof typeof fieldLabelMapping;
 
 interface UserEditFormProps {
   user: userDataInterface; // Current user data
-  onUpdate: (updatedUser: userDataInterface) => void; // Callback after successful update
 }
 
 const getInputType = (field: string) => {
@@ -28,7 +27,7 @@ const getInputType = (field: string) => {
   }
 };
 
-const ProfileSection: React.FC<UserEditFormProps> = ({ user, onUpdate }) => {
+const ProfileSection: React.FC<UserEditFormProps> = ({ user }) => {
   const { dispatch: userDispatch } = useUser();
   const { showSuccess, showError } = useAlert();
   const [formData, setFormData] = useState<userDataInterface>(user);
@@ -43,7 +42,6 @@ const ProfileSection: React.FC<UserEditFormProps> = ({ user, onUpdate }) => {
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    console.log({ name, value });
 
     setFormData((prev) => ({
       ...prev,
@@ -102,7 +100,6 @@ const ProfileSection: React.FC<UserEditFormProps> = ({ user, onUpdate }) => {
     // Replace the URL with your actual API endpoint
 
     const { success, data } = await updateUserData(formData);
-    console.log({ data });
 
     // Assuming the API returns the updated user data
     if (success) {
@@ -110,7 +107,6 @@ const ProfileSection: React.FC<UserEditFormProps> = ({ user, onUpdate }) => {
         type: 'SET_USER',
         payload: data as userDataInterface,
       });
-      onUpdate(data as userDataInterface);
       showSuccess('Profile updated successfully!');
     } else {
       console.error('Error updating profile:', data);

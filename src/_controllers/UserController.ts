@@ -12,7 +12,6 @@ export const updateUserData = async (
   data: Partial<userDataInterface>,
   headers?: AxiosRequestHeaders
 ) => {
-  // console.log({ data });
   const response = await axiosRequestWrapper<userDataInterface>(
     '/api/me',
     'put',
