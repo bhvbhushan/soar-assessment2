@@ -3,9 +3,33 @@ import CarousalComponent from '_lib/CarousalComponent';
 import ModuleComponent from '_lib/ModuleComponent';
 import { StyledButton, StyledTypographyLight } from '_styledComponents';
 import SendIcon from '@mui/icons-material/Send';
+import { SwiperSlide } from 'swiper/react';
+import { TransferIconComponent } from '_lib';
+import { contactInterface } from '_interfaces';
+import { contactData } from '_constants';
+import { useEffect, useState } from 'react';
+import { getAllContacts } from '_controllers';
+import { useAlert } from '_context';
+
+const carouselItems: contactInterface[] = contactData;
 
 const TransferModule = () => {
+  const [contacts, setContacts] = useState<contactInterface[]>([]);
+  const { showError } = useAlert();
   const theme = useTheme();
+
+  useEffect(() => {
+    const getContacts = async () => {
+      const { success, data } = await getAllContacts();
+      if (success) {
+        setContacts(data as contactInterface[]);
+      } else {
+        const message = 'Error Fetching Contacts';
+        showError(message);
+      }
+    };
+    getContacts();
+  }, []);
   return (
     <ModuleComponent primaryHeader="Quick Transfer" width={'40%'}>
       <Box
@@ -17,7 +41,14 @@ const TransferModule = () => {
           height: '100%',
         }}
       >
-        <CarousalComponent />
+        <CarousalComponent>
+          {contacts.length > 0 &&
+            contacts.map((item, index) => (
+              <SwiperSlide key={index}>
+                <TransferIconComponent item={item} />
+              </SwiperSlide>
+            ))}
+        </CarousalComponent>
         <Box
           display={'flex'}
           sx={{ justifyContent: 'center', alignItems: 'center', gap: 5 }}

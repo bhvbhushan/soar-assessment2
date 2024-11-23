@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 
 // Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper } from 'swiper/react';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -10,13 +10,13 @@ import 'swiper/css/pagination';
 
 // Import Swiper modules
 import { Navigation } from 'swiper/modules';
-import TransferIconComponent from '_lib/TransferIconComponent';
-import { contactInterface } from '_interfaces';
-import { contactData } from '_constants';
+import React from 'react';
 
-const carouselItems: contactInterface[] = contactData;
+interface crouselProps {
+  children: React.ReactNode;
+}
 
-const MultiItemCarousel = () => {
+const MultiItemCarousel: React.FC<crouselProps> = ({ children }) => {
   return (
     <Box sx={{ width: '100%', padding: 2 }}>
       <Swiper
@@ -53,11 +53,7 @@ const MultiItemCarousel = () => {
           },
         }}
       >
-        {carouselItems.map((item, index) => (
-          <SwiperSlide key={index}>
-            <TransferIconComponent item={item} />
-          </SwiperSlide>
-        ))}
+        {children}
       </Swiper>
     </Box>
   );

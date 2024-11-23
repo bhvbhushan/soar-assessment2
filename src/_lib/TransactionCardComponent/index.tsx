@@ -1,5 +1,6 @@
 import { Box, Typography, useTheme } from '@mui/material';
 import { trxLogoTypeEnum, trxTypeEnum } from '_constants';
+import { formatAmount } from '_helpers';
 import { trxDataInterface } from '_interfaces';
 import LogoIconComponent from '_lib/LogoIconComponent';
 import { StyledTypographyLight, StyledTypographyMain } from '_styledComponents';
@@ -59,7 +60,7 @@ const TransactionCardComponent: React.FC<trxCardProps> = ({ trx }) => {
               : theme.palette.transaction.credit,
         }}
       >
-        {`${trx.type === trxTypeEnum.debit ? '-' : '+'}$${trx.amount}`}
+        {`${trx.type === trxTypeEnum.debit ? '-' : '+'}$${formatAmount(trx.amount)}`}
       </Typography>
     </Box>
   );

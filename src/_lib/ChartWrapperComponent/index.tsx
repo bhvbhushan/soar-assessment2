@@ -6,7 +6,7 @@ interface chartWrapperPropsInterface {
   type: string;
   width: dimension;
   header: string;
-  data: nestedDataInterface;
+  data?: nestedDataInterface;
 }
 
 const ChartWrapperComponent: React.FC<chartWrapperPropsInterface> = ({
@@ -17,7 +17,7 @@ const ChartWrapperComponent: React.FC<chartWrapperPropsInterface> = ({
 }) => {
   return (
     <ModuleComponent primaryHeader={header} width={width}>
-      <ChartComponent type={type} data={data} />
+      {data ? <ChartComponent type={type} data={data} /> : <></>}
     </ModuleComponent>
   );
 };
