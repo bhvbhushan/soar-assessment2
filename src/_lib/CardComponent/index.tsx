@@ -10,11 +10,19 @@ import {
   StyledTypographyLight,
   StyledTypographyMain,
 } from '_styledComponents';
+import { cardDataInterface } from '_interfaces';
+import { formatAmount } from '_helpers';
 
 interface cardComponentProps {
   isFocused: boolean;
+  cardData: cardDataInterface;
+  userName: string;
 }
-const CardComponent: React.FC<cardComponentProps> = ({ isFocused }) => {
+const CardComponent: React.FC<cardComponentProps> = ({
+  isFocused,
+  cardData,
+  userName,
+}) => {
   const theme = useTheme();
   const chipLogo = isFocused ? ChipLogoTransparent : ChipLogoDark;
   const cardLogo = isFocused ? CardLogoLight : CardLogoDark;
@@ -52,7 +60,7 @@ const CardComponent: React.FC<cardComponentProps> = ({ isFocused }) => {
               isFocused={isFocused}
               focusedColor={focussedColor}
             >
-              $5,632
+              {`$${formatAmount(cardData.balance)}`}
             </StyledTypographyMain>
           </Box>
           <Box>
@@ -77,7 +85,7 @@ const CardComponent: React.FC<cardComponentProps> = ({ isFocused }) => {
               isFocused={isFocused}
               focusedColor={focussedColor}
             >
-              Eddy Cusuma
+              {userName}
             </StyledTypographyMain>
           </Box>
           <Box>
@@ -93,7 +101,7 @@ const CardComponent: React.FC<cardComponentProps> = ({ isFocused }) => {
               isFocused={isFocused}
               focusedColor={focussedColor}
             >
-              12/22
+              {cardData.expiry}
             </StyledTypographyMain>
           </Box>
         </StyledStack>
@@ -115,7 +123,7 @@ const CardComponent: React.FC<cardComponentProps> = ({ isFocused }) => {
           isFocused={isFocused}
           focusedColor={focussedColor}
         >
-          3778 **** *** 1234
+          {cardData.cardNumber}
         </StyledTypographyMain>
         <LogoIconComponent src={cardLogo} height={'2rem'} width={'3rem'} />
       </Box>

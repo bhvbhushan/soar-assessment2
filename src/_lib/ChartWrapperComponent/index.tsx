@@ -1,12 +1,12 @@
 import { dimension } from '_constants';
-import { nestedData } from '_interfaces';
+import { nestedDataInterface } from '_interfaces';
 import { ChartComponent, ModuleComponent } from '_lib';
 
 interface chartWrapperPropsInterface {
   type: string;
   width: dimension;
   header: string;
-  data: nestedData;
+  data: nestedDataInterface;
 }
 
 const ChartWrapperComponent: React.FC<chartWrapperPropsInterface> = ({

@@ -1,5 +1,5 @@
 import { color, chartDataObjectType } from '_constants';
-import { nestedData } from '_interfaces';
+import { nestedDataInterface } from '_interfaces';
 import { ChartData } from 'chart.js';
 
 // Function to generate a random integer between min and max (inclusive)
@@ -44,7 +44,9 @@ export const isObject = (value: unknown) => {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
 };
 
-export const transformChartData = (data: nestedData): ChartData | undefined => {
+export const transformChartData = (
+  data: nestedDataInterface
+): ChartData | undefined => {
   const chartDataObj: chartDataObjectType = {};
 
   const labels = Object.keys(data);
@@ -85,4 +87,46 @@ export const getPiePcntData = (data: number[]) => {
   const total = data.reduce((a, b) => a + b, 0);
   const pieData = data.map((val) => `${Math.floor((val / total) * 100)}%`);
   return pieData;
+};
+
+export const generateCCNum = () => {
+  let number = '';
+
+  // Generate the first digit (1-9)
+  number += Math.floor(Math.random() * 9) + 1;
+
+  // Generate the middle 10 digits (0-9)
+  for (let i = 0; i < 14; i++) {
+    number += Math.floor(Math.random() * 10);
+  }
+
+  // Generate the last digit (1-9)
+  number += Math.floor(Math.random() * 9) + 1;
+
+  return number;
+};
+
+export const maskCreditCard = (cardNumber: string) => {
+  // Remove any non-digit characters
+  const cleanedCardNumber = cardNumber.replace(/\D/g, '');
+
+  // Check if the card number is valid (at least 12 digits)
+  if (cleanedCardNumber.length < 12) {
+    return 'Invalid card number';
+  }
+
+  const first4Digits = cleanedCardNumber.slice(0, 4);
+  const last4Digits = cleanedCardNumber.slice(-4);
+  const maskedDigits = '*'.repeat(cleanedCardNumber.length - 8); // Adjust masked digit count
+
+  // Add spacing after every 4 digits in the masked digits
+  const spacedMaskedDigits = maskedDigits.match(/.{1,4}/g)?.join(' ');
+
+  return `${first4Digits}${spacedMaskedDigits} ${last4Digits}`;
+};
+
+export const formatAmount = (amount: number) => {
+  return Math.floor(amount)
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };

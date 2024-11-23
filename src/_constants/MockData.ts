@@ -147,9 +147,9 @@ export const expenseCategoryData = {
 };
 
 export const userInfoData = {
-  name: 'John Doe',
-  username: 'John Doe',
-  email: 'john.doe@example.com',
+  name: 'Charlene Reed',
+  username: 'Charlene Reed',
+  email: 'charlenereed@example.com',
   password: '1234567890',
   dob: '1999-11-22',
   address: 'San Jose, California',
@@ -158,3 +158,18 @@ export const userInfoData = {
   postalCode: '24567',
   country: 'USA',
 };
+
+export const cardData = [
+  {
+    balance: 34567,
+    expiry: '12/22',
+  },
+  {
+    balance: 3567,
+    expiry: '12/24',
+  },
+  {
+    balance: 34570,
+    expiry: '12/28',
+  },
+];

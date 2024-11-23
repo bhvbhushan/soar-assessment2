@@ -5,6 +5,7 @@ import { DashboardLayoutComponent } from '_lib';
 
 const AppContentView: React.FC<AppContent> = (props) => {
   const { routes } = props;
+
   return (
     <>
       <DashboardLayoutComponent>

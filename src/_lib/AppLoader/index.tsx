@@ -1,23 +1,41 @@
-import { Backdrop, CircularProgress } from '@mui/material';
-import React from 'react';
+import {
+  Container,
+  Typography,
+  Backdrop,
+  CircularProgress,
+} from '@mui/material';
+interface props {
+  loaderMsg?: string;
+}
 
-const AppLoader = () => {
-  const [open, setOpen] = React.useState(false);
-  const handleClose = () => {
-    setOpen(false);
-  };
-
+const AppLoader = ({ loaderMsg }: props) => {
   return (
-    <Backdrop
-      sx={(theme) => ({
-        color: theme.palette.background.paper,
-        zIndex: theme.zIndex.drawer + 1,
-      })}
-      open={open}
-      onClick={handleClose}
-    >
-      <CircularProgress color="inherit" />
-    </Backdrop>
+    <>
+      <Backdrop
+        sx={{
+          color: 'success',
+          zIndex: (theme: { zIndex: { drawer: number } }) =>
+            theme.zIndex.drawer + 1,
+        }}
+        open={true}
+      >
+        <Container
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'column',
+          }}
+        >
+          <CircularProgress color="inherit" sx={{ mb: 3 }} />
+          {loaderMsg && (
+            <Typography variant="h3">
+              {loaderMsg || 'Fetching Data...'}
+            </Typography>
+          )}
+        </Container>
+      </Backdrop>
+    </>
   );
 };
 

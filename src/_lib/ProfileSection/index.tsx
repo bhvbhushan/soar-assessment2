@@ -6,6 +6,7 @@ import { userDataInterface } from '_interfaces';
 import { fieldInputTypeEnum, fieldLabelMapping } from '_constants';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { validationSchema } from '_validations';
+import { useAlert } from '_context';
 
 type FieldKey = keyof typeof fieldLabelMapping;
 
@@ -42,6 +43,7 @@ const getInputType = (field: string) => {
 };
 
 const ProfileSection: React.FC<UserEditFormProps> = ({ user, onUpdate }) => {
+  const { showSuccess, showError } = useAlert();
   const [formData, setFormData] = useState<FormInputs>({
     name: user.name,
     username: user.username,
@@ -63,11 +65,6 @@ const ProfileSection: React.FC<UserEditFormProps> = ({ user, onUpdate }) => {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [serverError, setServerError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
-  const [open, setOpen] = useState(false);
-  const closeHandlerAlert = () => {
-    // setErrMsg('');
-    setOpen(false);
-  };
 
   // Handle input changes
   const handleChange = (
@@ -132,8 +129,6 @@ const ProfileSection: React.FC<UserEditFormProps> = ({ user, onUpdate }) => {
   // Handle form submission
   const handleSubmitForm = async (e: FormEvent) => {
     e.preventDefault();
-    setServerError(null);
-    setSuccessMessage(null);
 
     const isValid = await validate();
     if (!isValid) return;
@@ -169,14 +164,10 @@ const ProfileSection: React.FC<UserEditFormProps> = ({ user, onUpdate }) => {
 
       // // Assuming the API returns the updated user data
       // onUpdate(response.data);
-      setSuccessMessage('Profile updated successfully!');
-      setOpen(true);
+      showSuccess('Profile updated successfully!');
     } catch (error: any) {
       console.error('Error updating profile:', error);
-      setServerError(
-        error.response?.data?.message || 'Failed to update profile.'
-      );
-      setOpen(true);
+      showError(error.response?.data?.message || 'Failed to update profile.');
     } finally {
       setIsSubmitting(false);
     }
@@ -195,23 +186,6 @@ const ProfileSection: React.FC<UserEditFormProps> = ({ user, onUpdate }) => {
         },
       }}
     >
-      {serverError && (
-        <CustomAlert
-          open={open}
-          message={serverError}
-          handleClose={closeHandlerAlert}
-          severity="error"
-        />
-      )}
-
-      {successMessage && (
-        <CustomAlert
-          severity="success"
-          message={successMessage}
-          open={open}
-          handleClose={closeHandlerAlert}
-        />
-      )}
       <EditAvatar
         currentAvatarUrl={avatarPreview}
         onAvatarChange={handleAvatarChange}

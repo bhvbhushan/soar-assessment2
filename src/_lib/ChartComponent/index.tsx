@@ -5,12 +5,12 @@ import LineChart from './LineChart';
 import { color } from '_constants';
 import React from 'react';
 import { transformChartData } from '_helpers';
-import { nestedData } from '_interfaces';
+import { nestedDataInterface } from '_interfaces';
 import { ChartData } from 'chart.js';
 
 interface chartPropsInterface {
   type: string;
-  data: nestedData;
+  data: nestedDataInterface;
 }
 
 const ChartComponent: React.FC<chartPropsInterface> = ({ type, data }) => {

@@ -40,7 +40,13 @@ export interface tabStrucureInterface {
   active: boolean;
 }
 
-export interface nestedData {
+export interface nestedDataInterface {
   // Allowing only 1 level of Nesting
   [key: string]: string | number | { [key: string]: string | number };
+}
+
+export interface cardDataInterface {
+  cardNumber?: string;
+  balance: number;
+  expiry: string;
 }

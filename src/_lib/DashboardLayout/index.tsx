@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 import {
   Toolbar,
-  CssBaseline,
   Drawer,
   List,
   ListItem,
@@ -31,9 +30,11 @@ import LogoIconComponent from '_lib/LogoIconComponent';
 
 import { StyledTypographyMain } from '_styledComponents';
 import { useNavigate } from 'react-router-dom';
-import { AppBarCustom } from '_lib';
-import { menuItemInterface } from '_interfaces';
+import { AppBarCustom, AppLoader } from '_lib';
+import { menuItemInterface, userDataInterface } from '_interfaces';
 import { menuItem } from '_constants';
+import { useAlert, useUser } from '_context';
+import { getUserProfile } from '_controllers';
 
 const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -63,6 +64,31 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const drawerWidth = !displayDrawer ? 240 : '20%';
   const appbarWidth = !displayDrawer ? '100%' : '80%';
+
+  const { dispatch: userDispatch } = useUser();
+  const { showError } = useAlert();
+  const [loading, setLoading] = useState<boolean>(true);
+
+  // Fetch user data on component mount
+  useEffect(() => {
+    const fetchUser = async () => {
+      const response = await getUserProfile();
+      if (response.success) {
+        userDispatch({
+          type: 'SET_USER',
+          payload: response.data as userDataInterface,
+        });
+      } else {
+        const message =
+          (response.data as string) || 'Failed to fetch user data.';
+        showError(message);
+      }
+
+      setLoading(false);
+    };
+
+    fetchUser();
+  }, [userDispatch, showError]);
 
   const handleDrawerToggle = () => {
     console.log({ mobileOpen, isTab, isMobile });
@@ -128,7 +154,7 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
         margin: 0,
       }}
     >
-      <CssBaseline />
+      {loading && <AppLoader loaderMsg="Fetching User Info..." />}
       <AppBarCustom
         header={header}
         isMobile={isMobile}
@@ -185,7 +211,6 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
 
       {/* Main content */}
       <Container
-        disableGutters
         maxWidth={false}
         sx={{
           display: 'flex',
