@@ -73,7 +73,7 @@ export const transformChartData = (
   //Transforming to ChartData Type
   const dataLabels = Object.keys(chartDataObj);
   const datasets = dataLabels.map((lbl) => ({
-    label: lbl === '_temp' ? null : lbl,
+    label: lbl === '_temp' ? '' : lbl,
     data: chartDataObj[lbl],
   }));
   const dataObj = {

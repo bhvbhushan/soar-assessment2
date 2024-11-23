@@ -221,7 +221,10 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
           width: appbarWidth,
           minHeight: '100%',
           p: '1rem',
-          m: 0,
+          mt: {
+            xs: '4rem',
+            sm: 0,
+          },
           overflow: 'scrollable',
         }}
       >

@@ -7,4 +7,7 @@ export const IconWrapper = styled('div')(({ theme }) => ({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  // [theme.breakpoints.down('md')]: {
+  //   padding: '0.5rem',
+  // },
 }));

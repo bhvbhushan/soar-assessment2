@@ -9,7 +9,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 // Import Swiper modules
-import { Navigation } from 'swiper/modules';
+import { Keyboard, Mousewheel, Navigation } from 'swiper/modules';
 import React from 'react';
 
 interface crouselProps {
@@ -20,10 +20,14 @@ const MultiItemCarousel: React.FC<crouselProps> = ({ children }) => {
   return (
     <Box sx={{ width: '100%', padding: 2 }}>
       <Swiper
-        modules={[Navigation]}
+        modules={[Navigation, Keyboard, Mousewheel]}
         spaceBetween={30}
         slidesPerView={3}
         navigation
+        keyboard={{
+          enabled: true,
+        }}
+        mousewheel={true}
         // pagination={{ clickable: true }}
         loop={false}
         autoplay={{

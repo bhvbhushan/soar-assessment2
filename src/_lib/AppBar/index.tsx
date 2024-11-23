@@ -51,7 +51,7 @@ const appBarLg: React.FC<appBarSmProps> = ({
           {header.label}
         </Typography>
       </Box>
-      <Box sx={{ display: 'flex', width: '40%', gap: 4 }}>
+      <Box sx={{ display: 'flex', width: { md: '50%' }, gap: 4 }}>
         <SearchInput />
 
         <IconWrapper>

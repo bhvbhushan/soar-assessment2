@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { memo, useEffect, useRef } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -44,6 +44,7 @@ interface chartProps {
 
 // This currently supports ONLY 1 datasets at a time, due to restrictive Gradient feature
 const LineChart: React.FC<chartProps> = ({ data }) => {
+  console.log({ data });
   const theme = useTheme();
   const chartRef = useRef<ChartJS<'line'>>(null);
   const createGradient = (chart: ChartJS<'line'>) => {
@@ -54,7 +55,6 @@ const LineChart: React.FC<chartProps> = ({ data }) => {
       // Chart hasn't been drawn yet, exit early
       return;
     }
-
     // Create gradient
     const gradient = ctx.createLinearGradient(
       chartArea.left,
@@ -64,6 +64,8 @@ const LineChart: React.FC<chartProps> = ({ data }) => {
     );
     gradient.addColorStop(0, theme.palette.chart.blue.main);
     gradient.addColorStop(1, theme.palette.background.paper);
+
+    chart.data.datasets[0].fill = true;
     chart.data.datasets[0].borderColor = theme.palette.chart.blue.main;
     chart.data.datasets[0].backgroundColor = gradient;
   };
@@ -75,9 +77,7 @@ const LineChart: React.FC<chartProps> = ({ data }) => {
       },
     },
     layout: {
-      padding: {
-        bottom: 30,
-      },
+      padding: 30,
     },
 
     responsive: true,
@@ -87,8 +87,7 @@ const LineChart: React.FC<chartProps> = ({ data }) => {
         display: 'auto',
       },
       legend: {
-        position: 'top' as const,
-        align: 'end',
+        display: false,
       },
     },
     onResize: (chart: ChartJS<'line', (number | Point | null)[], unknown>) => {
@@ -103,8 +102,9 @@ const LineChart: React.FC<chartProps> = ({ data }) => {
 
     createGradient(chart);
     chart.update();
+    console.log({ chart });
   }, []);
   return <Line ref={chartRef} data={data} options={options} />;
 };
 
-export default LineChart;
+export default memo(LineChart);

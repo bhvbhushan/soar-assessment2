@@ -23,6 +23,7 @@ import {
   getRandomNum,
 } from '_helpers';
 import { color } from '_constants';
+import { memo } from 'react';
 // Register the necessary components
 ChartJS.register(
   CategoryScale,
@@ -109,4 +110,4 @@ const PieChart: React.FC<chartProps> = ({ colorPalette, data }) => {
   return <Pie data={updatedData} options={options} />;
 };
 
-export default PieChart;
+export default memo(PieChart);

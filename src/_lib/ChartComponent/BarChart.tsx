@@ -17,6 +17,7 @@ import {
   ChartOptions,
 } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels'; // Import
+import { memo } from 'react';
 
 import { Bar } from 'react-chartjs-2';
 // Register the necessary components
@@ -55,16 +56,16 @@ const BarChart: React.FC<chartProps> = ({ data, colorPalette }) => {
     },
     layout: {
       padding: {
-        bottom: 30,
+        bottom: 20,
       },
     },
     datasets: {
       bar: {
-        barThickness: 10,
+        barThickness: 20,
+        maxBarThickness: 20,
         borderRadius: 5,
-        borderSkipped: false,
-        categoryPercentage: 1,
-        barPercentage: 0.5,
+        categoryPercentage: 0.8,
+        barPercentage: 0.1,
       },
     },
     responsive: true,
@@ -82,4 +83,4 @@ const BarChart: React.FC<chartProps> = ({ data, colorPalette }) => {
   return <Bar data={data} options={options} />;
 };
 
-export default BarChart;
+export default memo(BarChart);

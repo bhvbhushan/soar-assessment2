@@ -54,8 +54,6 @@ const ChartComponent: React.FC<chartPropsInterface> = ({ type, data }) => {
     }
   };
 
-  console.log({ chart: getChart(type) });
-
   return (
     <Box
       sx={{
