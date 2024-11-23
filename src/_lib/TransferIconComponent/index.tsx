@@ -10,8 +10,14 @@ import Workman3 from 'assets/Workman3.png';
 
 import React from 'react';
 
-const TransferIconComponent: React.FC<{ item: contactInterface }> = ({
+interface transferIconInterface {
+  item: contactInterface;
+  handleClick: (data: contactInterface) => void;
+}
+
+const TransferIconComponent: React.FC<transferIconInterface> = ({
   item,
+  handleClick,
 }) => {
   const theme = useTheme();
   const iconMap = {
@@ -40,7 +46,10 @@ const TransferIconComponent: React.FC<{ item: contactInterface }> = ({
         },
       }}
     >
-      <Button sx={{ display: 'flex', flexDirection: 'column' }}>
+      <Button
+        sx={{ display: 'flex', flexDirection: 'column' }}
+        onClick={() => handleClick(item)}
+      >
         <LogoIconComponent
           src={iconMap[item.icon as keyof typeof iconMap]}
           height={'4rem'}

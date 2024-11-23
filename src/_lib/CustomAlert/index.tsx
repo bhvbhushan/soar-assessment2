@@ -29,7 +29,7 @@ const CustomAlert = ({
       anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={open}
       onClose={onCloseHandler}
-      autoHideDuration={6000}
+      autoHideDuration={2000}
     >
       <Alert
         onClose={onCloseHandler}

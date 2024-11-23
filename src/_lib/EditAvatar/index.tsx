@@ -6,13 +6,12 @@ import PhotoCamera from '@mui/icons-material/PhotoCamera';
 
 interface avatarEditProps {
   currentAvatarUrl?: string;
-  onAvatarChange: (file: File) => void;
   size?: number;
 }
 
 const EditAvatar: React.FC<avatarEditProps> = ({
   currentAvatarUrl,
-  onAvatarChange,
+
   size = '5rem',
 }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -42,9 +41,6 @@ const EditAvatar: React.FC<avatarEditProps> = ({
         setPreview(reader.result as string);
       };
       reader.readAsDataURL(file);
-
-      // Trigger the callback if provided
-      onAvatarChange(file);
     }
   };
   return (

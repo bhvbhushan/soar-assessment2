@@ -79,7 +79,7 @@ export const AlertProvider: React.FC<{ children: ReactNode }> = ({
 
   // Function to handle closing the snackbar
   const handleClose = (
-    event?: React.SyntheticEvent | Event,
+    _event?: React.SyntheticEvent | Event,
     reason?: string
   ) => {
     if (reason === 'clickaway') {

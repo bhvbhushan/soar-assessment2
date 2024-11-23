@@ -1,6 +1,6 @@
 import axiosInstance from '_api/axios';
 import { nestedDataInterface } from '_interfaces';
-import { AxiosRequestConfig, AxiosError } from 'axios';
+import { AxiosRequestConfig, AxiosError, AxiosRequestHeaders } from 'axios';
 
 interface SuccessResponseData<T> {
   success: boolean;
@@ -49,12 +49,14 @@ export const axiosFunctionWrapper = async <T>(
 export const axiosRequestWrapper = async <T>(
   url: string,
   method?: 'get' | 'post' | 'put',
-  data?: nestedDataInterface
+  data?: nestedDataInterface | FormData,
+  headers?: AxiosRequestHeaders
 ): Promise<SuccessResponseData<T>> => {
   const config = {
     method: method ? method : 'get',
     url: url,
     data: data,
+    headers: headers,
   };
 
   const response = await axiosFunctionWrapper<T>(config);
