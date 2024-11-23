@@ -66,8 +66,6 @@ const PieChart: React.FC<chartProps> = ({ colorPalette, data }) => {
     }),
   };
 
-  console.log({ updatedData });
-
   const options: ChartOptions<'pie'> = {
     plugins: {
       datalabels: {

@@ -145,3 +145,16 @@ export const expenseCategoryData = {
   'Bill Expense': 1800,
   Others: 1387,
 };
+
+export const userInfoData = {
+  name: 'John Doe',
+  username: 'John Doe',
+  email: 'john.doe@example.com',
+  password: '1234567890',
+  dob: '1999-11-22',
+  address: 'San Jose, California',
+  permanentAddress: 'San Jose, California',
+  city: 'San Jose',
+  postalCode: '24567',
+  country: 'USA',
+};

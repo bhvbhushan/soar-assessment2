@@ -12,7 +12,7 @@ export interface userDataInterface {
   name: string;
   username: string;
   email: string;
-  profilePicture?: string;
+  avatar?: string;
   password: string;
   dob: string;
   address: string;

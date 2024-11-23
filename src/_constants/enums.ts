@@ -11,7 +11,7 @@ export enum trxTypeEnum {
 
 export enum fieldInputTypeEnum {
   text = 'text',
-  password = 'passwrord',
+  password = 'password',
   date = 'date',
 }
 

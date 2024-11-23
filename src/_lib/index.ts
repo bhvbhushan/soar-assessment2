@@ -19,6 +19,8 @@ import BasicTabs from './TabComponent';
 import ProfileSection from './ProfileSection';
 import FormDataComponent from './FormDataComponent';
 import DatePickerComponent from './DatePicker';
+import EditAvatar from './EditAvatar';
+import CustomAlert from './CustomAlert';
 
 export {
   DashboardLayoutComponent,
@@ -42,4 +44,6 @@ export {
   ProfileSection,
   FormDataComponent,
   DatePickerComponent,
+  EditAvatar,
+  CustomAlert,
 };
