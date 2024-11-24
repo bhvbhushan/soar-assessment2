@@ -210,19 +210,21 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({
 
       {/* Main content */}
       <Container
+        disableGutters
         maxWidth={false}
         sx={{
           display: 'flex',
           flexDirection: 'column',
           rowGap: 5,
-          justifyContent: 'flex-start',
+          // justifyContent: 'flex-end',
           padding: theme.spacing(3),
           width: appbarWidth,
           minHeight: '100%',
           p: '1rem',
+          mx: 0,
           mt: {
             xs: '4rem',
-            sm: 0,
+            sm: '4rem',
           },
           overflow: 'scrollable',
         }}
