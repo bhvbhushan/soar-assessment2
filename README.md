@@ -2,6 +2,9 @@
 
 Firstly, **Thank You** for giving me the opportunity and putting your time for review of this project
 
+Edit: 24th Nov, 2024 - Made some changes to make the deployment on Netlify seamless, wasn't aware I had to add `_redirects` for the proper routing to be enabled in Netlify
+Deployed App: [Here](https://soar-task-bhavya.netlify.app)
+
 ### Installation and Setup
 
 - After cloning the repo, open the terminal
