@@ -1,9 +1,6 @@
-import React from 'react';
 import { RouteObject } from '_interfaces';
-
-const DashboardPage = React.lazy(() => import('_pages/DashboardPage'));
-
-const SettingPage = React.lazy(() => import('_pages/SettingPage'));
+import { Navigate } from 'react-router-dom';
+import { DashboardPage, SettingPage } from './PageElements';
 
 export const dashboardRoutes: RouteObject[] = [
   {
@@ -13,5 +10,13 @@ export const dashboardRoutes: RouteObject[] = [
   {
     path: '/setting',
     element: <SettingPage />,
+  },
+  {
+    path: '/',
+    element: <Navigate to="/dashboard" />,
+  },
+  {
+    path: '/index.html',
+    element: <Navigate to="/dashboard" />,
   },
 ];
